@@ -1,0 +1,29 @@
+ext.cdvCompileSdkVersion=29
+ext.cdvBuildToolsVersion="30.0.1"
+ext.cdvMinSdkVersion=23
+ext.cdvTargetSdkVersion=29
+
+android {
+    lintOptions {
+        abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url "https://jitpack.io" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    google()
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.annotation:annotation:1.0.2'
+    implementation 'com.github.yellowmessenger:YMChatbot-Android:v1.3.2'
+}
+  
