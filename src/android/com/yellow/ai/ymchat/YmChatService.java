@@ -15,6 +15,9 @@ import java.util.HashMap;
 
 public class YmChatService {
   YMChat ymChat;
+  final String YMBotCloseEvent = "YMBotCloseEvent";
+  final String Tag = "YmChat";
+  final String ExceptionString = "Exception";
 
   HashMap<String, Object> payloadData = new HashMap<>();
 
@@ -80,7 +83,22 @@ public class YmChatService {
         result.setKeepCallback(true);
         onEventFromBot.sendPluginResult(result);
       } catch (Exception e) {
-        Log.e("YmChat","Exception",e);
+        Log.e(Tag,ExceptionString,e);
+      }
+    });
+  }
+
+  public void onBotClose(CallbackContext onBotCloseEvent) {
+    ymChat.onEventFromBot(botEvent ->
+    {
+      JSONObject jsonObject = new JSONObject();
+      try {
+        jsonObject.put(YMBotCloseEvent, true);
+        PluginResult result = new PluginResult(PluginResult.Status.OK, jsonObject);
+        result.setKeepCallback(true);
+        onBotCloseEvent.sendPluginResult(result);
+      } catch (Exception e) {
+        Log.e(Tag,ExceptionString,e);
       }
     });
   }

@@ -17,34 +17,15 @@ import java.util.HashMap;
 
 public class YmChatCordova extends CordovaPlugin {
 
-  final String botId = "x1608615889375";
-  HashMap<String, Object> payloadData = new HashMap<>();
-  private Context ionicContext;
-  private YmChatService ymChatService = new YmChatService();
-  private JSONObject ymConfig;
+  final String Tag = "YmChat";
+  final String ExceptionString = "Exception";
 
-//   public YmChatCordova(ReactApplicationContext reactContext) {
-//     super(reactContext);
-//     this.reactContext = reactContext;
-//      ymChatService= new YMChatService(reactContext);
-// }
+  private final YmChatService ymChatService = new YmChatService();
 
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
     Log.d("YmSdkLog", action);
     switch (action) {
-      case "initializeYmChat":
-        String ymConfigString = args.getString(0);
-        initializeYmChat(ymConfigString, callbackContext);
-        return true;
-      case "startChatBot":
-        cordova.getThreadPool().execute(new Runnable() {
-          @Override
-          public void run() {
-            startChatBot("Hello", callbackContext);
-          }
-        });
-        return true;
       case "setBotId":
         String botId = args.getString(0);
         setBotId(botId);
@@ -78,7 +59,9 @@ public class YmChatCordova extends CordovaPlugin {
         setPayload(payload);
         return true;
       case "onEventFromBot":
-        ymChatService.onEventFromBot(callbackContext);
+        onEventFromBot(callbackContext);
+      case "onBotClose":
+        onBotClose(callbackContext);
       case "startBot":
         cordova.getThreadPool().execute(new Runnable() {
           @Override
@@ -94,52 +77,12 @@ public class YmChatCordova extends CordovaPlugin {
     return false;
   }
 
-  public void initializeYmChat(String ymConfigString, CallbackContext callbackContext) throws JSONException {
-    ymConfig = new JSONObject(ymConfigString);
-    callbackContext.success("Saved context successfully");
-    // cordova.getThreadPool().execute(new Runnable() {
-    //   @Override
-    //   public void run() {
-    //     startChatbot("Hello", callbackContext);
-    //   }
-    // });
-  }
-
-  public void startChatBot(String message, CallbackContext callbackContext) {
-    if (message != null && message.length() > 0) {
-      try {
-        Context ionicContext = this.cordova.getActivity().getApplicationContext();
-        YMChat ymChat = YMChat.getInstance();
-        Log.d("YmSdkLog", ymConfig.toString());
-        ymChat.config = new YMConfig(this.ymConfig.getString("botId"));
-        HashMap<String, Object> payloadData = new HashMap<>();
-        payloadData.put("some-key", "some-value");
-        ymChat.config.payload = payloadData;
-        ymChat.onEventFromBot((YMBotEventResponse botEvent) -> {
-          switch (botEvent.getCode()) {
-            case "event-name":
-              break;
-          }
-        });
-        ymChat.onBotClose(() -> {
-          Log.d("Example App", "Bot Was closed");
-        });
-        ymChat.startChatbot(ionicContext);
-
-      } catch (Exception e) {
-        callbackContext.error(e.toString());
-      }
-    } else {
-      callbackContext.error("Expected one non-empty string argument.");
-    }
-  }
-
   public void setBotId(String botId) {
     ymChatService.setBotId(botId);
   }
 
   public void startBot(CallbackContext callbackContext) {
-    ionicContext = this.cordova.getActivity().getApplicationContext();
+    Context ionicContext = this.cordova.getActivity().getApplicationContext();
     try {
       ymChatService.startChatbot(ionicContext);
     } catch (Exception e) {
@@ -181,7 +124,17 @@ public class YmChatCordova extends CordovaPlugin {
     }
     catch (Exception e)
     {
-      Log.e("YmChat","Exception",e);
+      Log.e(Tag,ExceptionString,e);
     }
+  }
+
+  public void onEventFromBot(CallbackContext onEventFromBot)
+  {
+    ymChatService.onEventFromBot(onEventFromBot);
+  }
+
+  public void onBotClose(CallbackContext onBotCloseEvent)
+  {
+    ymChatService.onBotClose(onBotCloseEvent);
   }
 }
