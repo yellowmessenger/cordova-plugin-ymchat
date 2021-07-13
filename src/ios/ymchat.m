@@ -12,7 +12,6 @@
 @end
 
 @implementation ymchat
-
 - (void)setBotId:(CDVInvokedUrlCommand*)command
 {
     NSString* botId = [command.arguments objectAtIndex:0];
@@ -102,7 +101,7 @@
 
 - (void)onEventFromBotWithResponse:(YMBotEventResponse *)response {
     CDVPluginResult* pluginResult = nil;
-    NSDictionary* event = @{ response.code: response.data};
+    NSDictionary* event = @{ @"code":response.code,@"data": response.data};
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:event];
     [pluginResult setKeepCallbackAsBool:YES];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:onEvent.callbackId];
@@ -110,10 +109,9 @@
 
 - (void) onBotClose {
     CDVPluginResult* pluginResult = nil;
-    NSDictionary* event = @{ @"YMBotCloseEvent": @YES };
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:event];
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Hello"];
     [pluginResult setKeepCallbackAsBool:YES];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:onEvent.callbackId];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:onBotClosed.callbackId];
 }
 
 @end

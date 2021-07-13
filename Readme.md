@@ -21,7 +21,7 @@ const YmChat = cordova.plugins.ymchat;
 ### Set botId
 
 ```javascript
-YmChat.setBotId("x1597301712805");
+YmChat.setBotId("botId");
 ```
 
 ### Present chatbot
@@ -45,7 +45,7 @@ Information can be passed from app to bot using payload.
 The payload dictionary should be JSON compatible else an error will be thrown
 
 ```javascript
-YmChat.setPayload({ "Developer name": "Purushottam" });
+YmChat.setPayload({ "Company name": "Yellow.ai" });
 ```
 
 ### History
@@ -62,16 +62,17 @@ Bot can send events to the host app.
 
 ```javascript
 YmChat.onEventFromBot((result) => {
-  console.log(JSON.stringify(result));
+  console.log("Code : " + result.code);
+  console.log("Data : " + JSON.stringify(result.data));
 });
 ```
 
 ## Close bot
 
-Bot canbe closed by tapping on cross button at top, and they can be progrmatically closed using `closeBot()` function
+Bot can be closed by tapping on cross button at top, and they can be programmatically closed using `closeBot()` function
 
 ```javascript
-YmChat.showCloseBot(true);
+YmChat.closeBot();
 ```
 
 ## Close bot event
@@ -79,8 +80,8 @@ YmChat.showCloseBot(true);
 Bot close event is separetly sent and it can be handled in following way.
 
 ```javascript
-YmChat.onBotClose((onBotCloseEvent) => {
-  console.log(JSON.stringify(onBotCloseEvent));
+YmChat.onBotClose(() => {
+  console.log("Bot Closed");
 });
 ```
 

@@ -78,7 +78,8 @@ public class YmChatService {
     {
       JSONObject jsonObject = new JSONObject();
       try {
-        jsonObject.put(botEvent.getCode(), new JSONObject(botEvent.getData()));
+        jsonObject.put("code",botEvent.getCode());
+        jsonObject.put("data", new JSONObject(botEvent.getData()));
         PluginResult result = new PluginResult(PluginResult.Status.OK, jsonObject);
         result.setKeepCallback(true);
         onEventFromBot.sendPluginResult(result);
@@ -89,12 +90,10 @@ public class YmChatService {
   }
 
   public void onBotClose(CallbackContext onBotCloseEvent) {
-    ymChat.onEventFromBot(botEvent ->
+    ymChat.onBotClose(() ->
     {
-      JSONObject jsonObject = new JSONObject();
       try {
-        jsonObject.put(YMBotCloseEvent, true);
-        PluginResult result = new PluginResult(PluginResult.Status.OK, jsonObject);
+        PluginResult result = new PluginResult(PluginResult.Status.OK);
         result.setKeepCallback(true);
         onBotCloseEvent.sendPluginResult(result);
       } catch (Exception e) {

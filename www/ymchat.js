@@ -25,14 +25,11 @@ const YmChatAPI = {
   setPayload: (payload) => {
     exec(null, null, "ymchat", "setPayload", [payload]);
   },
-  showCloseBot: (showCloseBot) => {
-    exec(null, null, "ymchat", "showCloseBot", [showCloseBot]);
-  },
   onEventFromBot: (eventListener) => {
     exec(eventListener, null, "ymchat", "onEventFromBot", []);
   },
   onBotClose: (onBotCloseEvent) => {
-    exec(onBotCloseEvent, null, "ymchat", "onEventFromBot", []);
+    exec(onBotCloseEvent, null, "ymchat", "onBotClose", []);
   },
   startBot: (success, error) => {
     exec(success, error, "ymchat", "startBot", []);
