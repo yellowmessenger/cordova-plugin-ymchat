@@ -7,6 +7,7 @@
         <clobbers target="cordova.plugins.ymchat" />
     </js-module>
     <platform name="android">
+        <dependency id="cordova-plugin-androidx-adapter"/>
         <config-file parent="/*" target="res/xml/config.xml">
             <feature name="ymchat">
                 <param name="android-package" value="com.yellow.ai.ymchat.YmChatCordova" />
@@ -19,6 +20,7 @@
             <uses-permission android:name="android.permission.INTERNET" />
             <uses-permission android:name="android.permission.RECORD_AUDIO" />
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
         </config-file>
         <source-file src="src/android/com/yellow/ai/ymchat/YmChatCordova.java" target-dir="src/com/yellow/ai/ymchat" />
         <source-file src="src/android/com/yellow/ai/ymchat/YmChatService.java" target-dir="src/com/yellow/ai/ymchat" />
@@ -38,11 +40,20 @@
         <config-file parent="/*" target="config.xml">
             <feature name="ymchat">
                 <param name="ios-package" value="ymchat"/>
+                <param name="onload" value="true" />
             </feature>
             <preference name="deployment-target" value="12.0" />
             <preference name="target-device" value="universal" />
         </config-file>
-        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+        <preference name="MICROPHONE_USAGE_DESCRIPTION" default="Your microphone will be used to record your speech when you use the Voice feature."/>
+        <config-file target="*-Info.plist" parent="NSMicrophoneUsageDescription">
+            <string>$MICROPHONE_USAGE_DESCRIPTION</string>
+        </config-file>
+        <preference name="SPEECH_RECOGNITION_USAGE_DESCRIPTION<" default="Speech recognition will be used to determine which words you speak into this device&apos;s microphone."/>
+        <config-file target="*-Info.plist" parent="NSSpeechRecognitionUsageDescription">
+            <string>$SPEECH_RECOGNITION_USAGE_DESCRIPTION</string>
+        </config-file>
+        <!-- <config-file target="*-Info.plist" parent="CFBundleURLTypes">
             <array>
                 <dict>
                     <key>NSMicrophoneUsageDescription</key>
@@ -51,7 +62,7 @@
                     <string>Speech recognition will be used to determine which words you speak into this device&apos;s microphone.</string>
                 </dict>
             </array>
-        </config-file>
+        </config-file> -->
         <source-file src="src/ios/ymchat.m" />
     </platform>
 </plugin>

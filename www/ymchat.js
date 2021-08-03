@@ -2,10 +2,11 @@ var exec = require("cordova/exec");
 
 const YmChatAPI = {
   setBotId: (botId) => {
+    console.log("setting bot id");
     exec(null, null, "ymchat", "setBotId", [botId]);
   },
-  setDeviceToken: () => {
-    exec(null, null, "ymchat", "setDeviceToken", []);
+  setDeviceToken: (token) => {
+    exec(null, null, "ymchat", "setDeviceToken", [token]);
   },
   setEnableSpeech: (speech) => {
     exec(null, null, "ymchat", "setEnableSpeech", [speech]);
@@ -23,16 +24,20 @@ const YmChatAPI = {
     exec(null, null, "ymchat", "setCustomURL", [url]);
   },
   setPayload: (payload) => {
+    console.log("setting payload");
     exec(null, null, "ymchat", "setPayload", [payload]);
   },
   onEventFromBot: (eventListener) => {
+    console.log("listening to events");
     exec(eventListener, null, "ymchat", "onEventFromBot", []);
   },
   onBotClose: (onBotCloseEvent) => {
+    console.log("listening to bot close events");
     exec(onBotCloseEvent, null, "ymchat", "onBotClose", []);
   },
-  startBot: (success, error) => {
-    exec(success, error, "ymchat", "startBot", []);
+  startBot: (success, failure) => {
+    console.log("Starting chatbot");
+    exec(success, failure, "ymchat", "startBot", []);
   },
   closeBot: () => {
     exec(null, null, "ymchat", "closeBot", []);

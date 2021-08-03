@@ -3,17 +3,13 @@ package com.yellow.ai.ymchat;
 import android.content.Context;
 import android.util.Log;
 
-import com.yellowmessenger.ymchat.YMChat;
-import com.yellowmessenger.ymchat.YMConfig;
-import com.yellowmessenger.ymchat.models.YMBotEventResponse;
+import com.yellow.ai.ymchat.utils.Utils;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.HashMap;
 
 public class YmChatCordova extends CordovaPlugin {
 
@@ -23,52 +19,41 @@ public class YmChatCordova extends CordovaPlugin {
   private final YmChatService ymChatService = new YmChatService();
 
   @Override
-  public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+  public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {
     Log.d("YmSdkLog", action);
     switch (action) {
       case "setBotId":
-        String botId = args.getString(0);
-        setBotId(botId);
+        setBotId(args, callbackContext);
         return true;
       case "setDeviceToken":
-        String deviceToken = args.getString(0);
-        setDeviceToken(deviceToken);
+        setDeviceToken(args, callbackContext);
         return true;
       case "setEnableSpeech":
-        boolean enableSpeech = args.getBoolean(0);
-        setEnableSpeech(enableSpeech);
+        setEnableSpeech(args, callbackContext);
         return true;
       case "setEnableHistory":
-        boolean enableHistory = args.getBoolean(0);
-        setEnableHistory(enableHistory);
+        setEnableHistory(args, callbackContext);
         return true;
       case "setAuthenticationToken":
-        String authToken = args.getString(0);
-        setAuthenticationToken(authToken);
+        setAuthenticationToken(args, callbackContext);
         return true;
       case "showCloseButton":
-        boolean closeButton = args.getBoolean(0);
-        showCloseButton(closeButton);
+        showCloseButton(args, callbackContext);
         return true;
       case "setCustomURL":
-        String customUrl = args.getString(0);
-        setCustomURL(customUrl);
+        setCustomURL(args, callbackContext);
         return true;
       case "setPayload":
-        JSONObject payload = args.getJSONObject(0);
-        setPayload(payload);
+        setPayload(args, callbackContext);
         return true;
       case "onEventFromBot":
         onEventFromBot(callbackContext);
+        return true;
       case "onBotClose":
         onBotClose(callbackContext);
+        return true;
       case "startBot":
-        cordova.getThreadPool().execute(new Runnable() {
-          @Override
-          public void run() {
-            startBot(callbackContext);
-          }
-        });
+        startBot(callbackContext);
         return true;
       case "closeBot":
         closeBot();
@@ -77,64 +62,101 @@ public class YmChatCordova extends CordovaPlugin {
     return false;
   }
 
-  public void setBotId(String botId) {
-    ymChatService.setBotId(botId);
+  public void setBotId(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String botId = args.getString(0);
+      ymChatService.setBotId(botId, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
   }
 
   public void startBot(CallbackContext callbackContext) {
-    Context ionicContext = this.cordova.getActivity().getApplicationContext();
-    try {
-      ymChatService.startChatbot(ionicContext);
-    } catch (Exception e) {
-      callbackContext.error(e.toString());
-    }
+    cordova.getActivity().runOnUiThread(new Runnable() {
+      @Override
+      public void run() {
+        Context ionicContext = cordova.getActivity().getApplicationContext();
+        try {
+          ymChatService.startChatbot(ionicContext, callbackContext);
+        } catch (Exception e) {
+          callbackContext.error(e.toString());
+        }
+      }
+    });
   }
 
   public void closeBot() {
     ymChatService.closeBot();
   }
 
-  public void setDeviceToken(String token) {
-    ymChatService.setDeviceToken(token);
-  }
-
-  public void setEnableSpeech(boolean speech) {
-    ymChatService.setEnableSpeech(speech);
-  }
-
-  public void setEnableHistory(boolean history) {
-    ymChatService.setEnableHistory(history);
-  }
-
-  public void setAuthenticationToken(String token) {
-    ymChatService.setAuthenticationToken(token);
-  }
-
-  public void showCloseButton(boolean show) {
-    ymChatService.showCloseButton(show);
-  }
-
-  public void setCustomURL(String url) {
-    ymChatService.customBaseUrl(url);
-  }
-
-  public void setPayload(JSONObject payload) {
-    try{
-      ymChatService.setPayload(payload);
-    }
-    catch (Exception e)
-    {
-      Log.e(Tag,ExceptionString,e);
+  public void setDeviceToken(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String deviceToken = args.getString(0);
+      ymChatService.setDeviceToken(deviceToken, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
     }
   }
 
-  public void onEventFromBot(CallbackContext onEventFromBot)
-  {
+  public void setEnableSpeech(JSONArray args, CallbackContext callbackContext) {
+    try {
+      boolean enableSpeech = args.getBoolean(0);
+      ymChatService.setEnableSpeech(enableSpeech, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void setEnableHistory(JSONArray args, CallbackContext callbackContext) {
+    try {
+      boolean enableHistory = args.getBoolean(0);
+      ymChatService.setEnableHistory(enableHistory, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void setAuthenticationToken(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String authToken = args.getString(0);
+      ymChatService.setAuthenticationToken(authToken, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void showCloseButton(JSONArray args, CallbackContext callbackContext) {
+    try {
+      boolean closeButton = args.getBoolean(0);
+      ymChatService.showCloseButton(closeButton, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void setCustomURL(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String customUrl = args.getString(0);
+      ymChatService.customBaseUrl(customUrl, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void setPayload(JSONArray args, CallbackContext callbackContext) {
+    try {
+      JSONObject payload = args.getJSONObject(0);
+      ymChatService.setPayload(payload, callbackContext);
+    } catch (Exception e) {
+      Log.e(Tag, ExceptionString, e);
+    }
+  }
+
+  public void onEventFromBot(CallbackContext onEventFromBot) {
     ymChatService.onEventFromBot(onEventFromBot);
   }
 
-  public void onBotClose(CallbackContext onBotCloseEvent)
-  {
+  public void onBotClose(CallbackContext onBotCloseEvent) {
     ymChatService.onBotClose(onBotCloseEvent);
   }
 }

@@ -1,4 +1,7 @@
 package com.yellow.ai.ymchat.utils;
+import android.util.Log;
+
+import org.apache.cordova.CallbackContext;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -71,4 +74,47 @@ public class Utils {
         }
         return list;
     }
+    public static void genericErrorHelper(Exception exception, CallbackContext callbackContext) {
+        Log.e("YmLog", "Failure", exception);
+        try {
+          String error = exception.getMessage();
+          StackTraceElement[] stackTrace = exception.getStackTrace();
+    
+          JSONObject errorJson = new JSONObject();
+          errorJson.put("success", false);
+          errorJson.put("error", error);
+          errorJson.put("stackTrace", stackTrace);
+          callbackContext.error(errorJson);
+    
+        } catch (Exception e) {
+    
+          callbackContext.error("Error");
+    
+        }
+    
+      }
+    
+      public static void sdkErrorHelper(String error, CallbackContext callbackContext) {
+        Log.d("YmLog", error);
+        try {
+    
+          JSONObject errorJson = new JSONObject();
+          errorJson.put("success", false);
+          errorJson.put("error", error);
+          errorJson.put("stackTrace", new JSONObject());
+          callbackContext.error(errorJson);
+    
+        } catch (Exception e) {
+    
+          callbackContext.error("Error");
+    
+        }
+    
+      }
+    
+      public static void genericSuccessHelper(CallbackContext callbackContext) {
+        Log.d("YmLog", "Success");
+        callbackContext.success();
+    
+      }
 }

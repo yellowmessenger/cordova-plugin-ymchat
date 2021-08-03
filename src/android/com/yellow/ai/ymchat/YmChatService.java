@@ -15,25 +15,24 @@ import java.util.HashMap;
 
 public class YmChatService {
   YMChat ymChat;
-  final String YMBotCloseEvent = "YMBotCloseEvent";
   final String Tag = "YmChat";
   final String ExceptionString = "Exception";
+  final String code = "code";
+  final String data = "date";
 
   HashMap<String, Object> payloadData = new HashMap<>();
 
   YmChatService() {
     this.ymChat = YMChat.getInstance();
-    ymChat.onBotClose(() -> {
-    });
   }
 
-  public void setBotId(String botId) {
+  public void setBotId(String botId, CallbackContext callbackContext) {
     ymChat.config = new YMConfig(botId);
     ymChat.config.ymAuthenticationToken = "";
     ymChat.config.payload = payloadData;
   }
 
-  public void startChatbot(Context context) {
+  public void startChatbot(Context context, CallbackContext callbackContext) {
     try {
       ymChat.startChatbot(context);
     } catch (Exception e) {
@@ -45,59 +44,64 @@ public class YmChatService {
     ymChat.closeBot();
   }
 
-  public void setDeviceToken(String token) {
+  public void setDeviceToken(String token, CallbackContext callbackContext) {
     ymChat.config.deviceToken = token;
   }
 
-  public void setEnableSpeech(boolean speech) {
+  public void setEnableSpeech(boolean speech, CallbackContext callbackContext) {
     ymChat.config.enableSpeech = speech;
   }
 
-  public void setEnableHistory(boolean history) {
+  public void setEnableHistory(boolean history, CallbackContext callbackContext) {
     ymChat.config.enableHistory = history;
   }
 
-  public void setAuthenticationToken(String token) {
+  public void setAuthenticationToken(String token, CallbackContext callbackContext) {
     ymChat.config.ymAuthenticationToken = token;
   }
 
-  public void showCloseButton(boolean show) {
+  public void showCloseButton(boolean show, CallbackContext callbackContext) {
     ymChat.config.showCloseButton = show;
   }
 
-  public void customBaseUrl(String url) {
+  public void customBaseUrl(String url, CallbackContext callbackContext) {
     ymChat.config.customBaseUrl = url;
   }
 
-  public void setPayload(JSONObject payload) throws Exception {
-    ymChat.config.payload.putAll(Utils.jsonToMap(payload));
+  public void setPayload(JSONObject payload, CallbackContext callbackContext)  {
+    try{
+      ymChat.config.payload.putAll(Utils.jsonToMap(payload));
+    }
+    catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
   }
 
-  public void onEventFromBot(CallbackContext onEventFromBot) {
+  public void onEventFromBot(CallbackContext callback) {
     ymChat.onEventFromBot(botEvent ->
     {
       JSONObject jsonObject = new JSONObject();
       try {
-        jsonObject.put("code",botEvent.getCode());
-        jsonObject.put("data", new JSONObject(botEvent.getData()));
+        jsonObject.put(code, botEvent.getCode());
+        jsonObject.put(data, new JSONObject(botEvent.getData()));
         PluginResult result = new PluginResult(PluginResult.Status.OK, jsonObject);
         result.setKeepCallback(true);
-        onEventFromBot.sendPluginResult(result);
+        callback.sendPluginResult(result);
       } catch (Exception e) {
-        Log.e(Tag,ExceptionString,e);
+        Log.e(Tag, ExceptionString, e);
       }
     });
   }
 
-  public void onBotClose(CallbackContext onBotCloseEvent) {
+  public void onBotClose(CallbackContext callback) {
     ymChat.onBotClose(() ->
     {
       try {
         PluginResult result = new PluginResult(PluginResult.Status.OK);
         result.setKeepCallback(true);
-        onBotCloseEvent.sendPluginResult(result);
+        callback.sendPluginResult(result);
       } catch (Exception e) {
-        Log.e(Tag,ExceptionString,e);
+        Log.e(Tag, ExceptionString, e);
       }
     });
   }
