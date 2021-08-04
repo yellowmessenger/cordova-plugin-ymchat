@@ -24,19 +24,15 @@ const YmChatAPI = {
     exec(null, null, "ymchat", "setCustomURL", [url]);
   },
   setPayload: (payload) => {
-    console.log("setting payload");
     exec(null, null, "ymchat", "setPayload", [payload]);
   },
   onEventFromBot: (eventListener) => {
-    console.log("listening to events");
     exec(eventListener, null, "ymchat", "onEventFromBot", []);
   },
   onBotClose: (onBotCloseEvent) => {
-    console.log("listening to bot close events");
     exec(onBotCloseEvent, null, "ymchat", "onBotClose", []);
   },
   startChatbot: (success, failure) => {
-    console.log("Starting chatbot");
     exec(success, failure, "ymchat", "startChatbot", []);
   },
   closeBot: () => {

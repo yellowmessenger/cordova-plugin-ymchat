@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-ymchat" version="0.0.1"
+<plugin id="cordova-plugin-ymchat" version="1.0.0"
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>ymchat</name>
@@ -53,16 +53,6 @@
         <config-file target="*-Info.plist" parent="NSSpeechRecognitionUsageDescription">
             <string>$SPEECH_RECOGNITION_USAGE_DESCRIPTION</string>
         </config-file>
-        <!-- <config-file target="*-Info.plist" parent="CFBundleURLTypes">
-            <array>
-                <dict>
-                    <key>NSMicrophoneUsageDescription</key>
-                    <string>Your microphone will be used to record your speech when you use the Voice feature.</string>
-                    <key>NSSpeechRecognitionUsageDescription</key>
-                    <string>Speech recognition will be used to determine which words you speak into this device&apos;s microphone.</string>
-                </dict>
-            </array>
-        </config-file> -->
         <source-file src="src/ios/ymchat.m" />
     </platform>
 </plugin>

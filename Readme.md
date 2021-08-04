@@ -25,7 +25,19 @@ cordova.plugins.ymchat.setBotId("botId");
 Chat bot can be presented by calling `startChatbot()`. This method will display full screen chat view
 
 ```javascript
-cordova.plugins.ymchat.startChatbot(successCallBackFunc, failureCallBackFunc);
+cordova.plugins.ymchat.startChatbot(
+  (successResponse) => {
+    console.log(successResponse); //prints "OK"
+  },
+  (failureJSON) => {
+    console.log(JSON.stringify(failureJSON));
+    /* Console.log prints
+    {
+      "success": false,
+      "error": "This is the error occurred"
+    } */
+  }
+);
 ```
 
 ### Other configurations

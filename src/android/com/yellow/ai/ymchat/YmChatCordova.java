@@ -20,7 +20,6 @@ public class YmChatCordova extends CordovaPlugin {
 
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {
-    Log.d("YmSdkLog", action);
     switch (action) {
       case "setBotId":
         setBotId(args, callbackContext);

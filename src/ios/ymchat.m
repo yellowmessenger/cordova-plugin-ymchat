@@ -4,7 +4,8 @@
 
 @import YMChat;
 
-@interface ymchat : CDVPlugin<YMChatDelegate> {
+@interface ymchat : CDVPlugin<YMChatDelegate> 
+{
     CDVInvokedUrlCommand* onEvent;
     CDVInvokedUrlCommand* onBotClosed;
 }
