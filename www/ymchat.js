@@ -35,9 +35,9 @@ const YmChatAPI = {
     console.log("listening to bot close events");
     exec(onBotCloseEvent, null, "ymchat", "onBotClose", []);
   },
-  startBot: (success, failure) => {
+  startChatbot: (success, failure) => {
     console.log("Starting chatbot");
-    exec(success, failure, "ymchat", "startBot", []);
+    exec(success, failure, "ymchat", "startChatbot", []);
   },
   closeBot: () => {
     exec(null, null, "ymchat", "closeBot", []);

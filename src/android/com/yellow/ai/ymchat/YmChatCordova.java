@@ -52,8 +52,8 @@ public class YmChatCordova extends CordovaPlugin {
       case "onBotClose":
         onBotClose(callbackContext);
         return true;
-      case "startBot":
-        startBot(callbackContext);
+      case "startChatbot":
+      startChatbot(callbackContext);
         return true;
       case "closeBot":
         closeBot();
@@ -71,7 +71,7 @@ public class YmChatCordova extends CordovaPlugin {
     }
   }
 
-  public void startBot(CallbackContext callbackContext) {
+  public void startChatbot(CallbackContext callbackContext) {
     cordova.getActivity().runOnUiThread(new Runnable() {
       @Override
       public void run() {

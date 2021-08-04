@@ -1,33 +1,31 @@
-# ymchat
+# cordova-plugin-ymchat
 
 ## Installation
 
 ### cordova
 
-Specify the path to the plugin folder here my path is ../ymchat
+Run this command in terminal form project root folder
 
 ```
-ionic cordova plugin add ../ymchat
+ionic cordova plugin add cordova-plugin-ymchat
 ```
 
 ## Usage
 
-import plugin
-
-```javascript
-const YmChat = cordova.plugins.ymchat;
-```
-
 ### Set botId
 
+This is the first and compulsory step.
+
 ```javascript
-YmChat.setBotId("botId");
+cordova.plugins.ymchat.setBotId("botId");
 ```
 
 ### Present chatbot
 
+Chat bot can be presented by calling `startChatbot()`. This method will display full screen chat view
+
 ```javascript
-YmChat.startBot(successCallBackFunc, failureCallBackFunc);
+cordova.plugins.ymchat.startChatbot(successCallBackFunc, failureCallBackFunc);
 ```
 
 ### Other configurations
@@ -35,7 +33,7 @@ YmChat.startBot(successCallBackFunc, failureCallBackFunc);
 Speech to text can be enabled and disabled by calling setEnableSpeech(). Default value is `false`
 
 ```javascript
-YmChat.setEnableSpeech(true);
+cordova.plugins.ymchat.setEnableSpeech(true);
 ```
 
 ### Payload
@@ -45,15 +43,15 @@ Information can be passed from app to bot using payload.
 The payload dictionary should be JSON compatible else an error will be thrown
 
 ```javascript
-YmChat.setPayload({ "Company name": "Yellow.ai" });
+cordova.plugins.ymchat.setPayload({ "Company-name": "Yellow.ai" });
 ```
 
 ### History
 
-Chat history can be enabled and disabled by calling setEnableHistory(). Default value is `false`
+Chat history can be enabled and disabled by calling `setEnableHistory()`. Default value is `false`
 
 ```javascript
-YmChat.setEnableHistory(true);
+cordova.plugins.ymchat.setEnableHistory(true);
 ```
 
 ### Event from bot
@@ -61,9 +59,9 @@ YmChat.setEnableHistory(true);
 Bot can send events to the host app.
 
 ```javascript
-YmChat.onEventFromBot((result) => {
-  console.log("Code : " + result.code);
-  console.log("Data : " + JSON.stringify(result.data));
+cordova.plugins.ymchat.onEventFromBot((result) => {
+  console.log("Code : " + result.code); // Prints the event sent to the chat bot
+  console.log("Data : " + JSON.stringify(result.data)); // Prints the event sent to the chat bot
 });
 ```
 
@@ -72,29 +70,29 @@ YmChat.onEventFromBot((result) => {
 Bot can be closed by tapping on cross button at top, and they can be programmatically closed using `closeBot()` function
 
 ```javascript
-YmChat.closeBot();
+cordova.plugins.ymchat.closeBot();
 ```
 
 ## Close bot event
 
-Bot close event is separetly sent and it can be handled in following way.
+Bot close event is separately sent and it can be handled in following way.
 
 ```javascript
-YmChat.onBotClose(() => {
-  console.log("Bot Closed");
+cordova.plugins.ymchat.onBotClose(() => {
+  console.log("Bot Closed"); // Prints Bot Closed
 });
 ```
 
 ## Push Notifications
 
-ymchat-react-native supports firebase notifications. Push notifications needs `authentication token` and `device token`
+cordova-plugin-ymchat supports firebase notifications. Push notifications needs `authentication token` and `device token`
 
 ### Authentication Token
 
 Authentication token can be set using `setAuthenticationToken` method. Auth token can be a unique identifier like email or UUID
 
 ```javascript
-YmChat.setAuthenticationToken("token");
+cordova.plugins.ymchat.setAuthenticationToken("token");
 ```
 
 ### Device Token
@@ -102,7 +100,7 @@ YmChat.setAuthenticationToken("token");
 Device token can be set using `setDeviceToken` method. Pass `fcmToken` as a parameter to this method.
 
 ```javascript
-YmChat.setDeviceToken("token");
+cordova.plugins.ymchat.setDeviceToken("token");
 ```
 
 It is recommended to set authentication token and device token before `startChatbot()`
@@ -111,8 +109,8 @@ Note: Firebase service account key is required to send notifications. You can sh
 
 ## On-Prem Deployments
 
-ymchat-react-native supports bots with on-prem deployments. For the bot to work, pass the on-prem URL to `setCustomURL()` method.
+cordova-plugin-ymchat supports bots with on-prem deployments. For the bot to work, pass the on-prem URL to `setCustomURL()` method.
 
 ```javascript
-YmChat.setCustomURL("https://your-on-prem-url.com");
+cordova.plugins.ymchat.setCustomURL("https://your-on-prem-url.com");
 ```

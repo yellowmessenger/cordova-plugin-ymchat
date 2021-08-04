@@ -86,7 +86,7 @@
     onBotClosed = command;
 }
 
-- (void)startBot:(CDVInvokedUrlCommand*)command
+- (void)startChatbot:(CDVInvokedUrlCommand*)command
 {
     assert(YMChat.shared.config != nil);
     YMChat.shared.delegate = self;
