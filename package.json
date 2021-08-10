@@ -9,10 +9,19 @@
       "ios"
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yellowmessenger/cordova-plugin-ymchat.git"
+  },
   "keywords": [
     "ecosystem:cordova",
-    "cordova-android"
+    "cordova-android",
+    "cordova-plugin-ymchat",
   ],
   "author": "Purushottam",
-  "license": "ISC"
+  "license": "ISC",
+  "homepage": "https://github.com/yellowmessenger/cordova-plugin-ymchat.git",
+  "bugs": {
+    "url": "https://github.com/yellowmessenger/cordova-plugin-ymchat/issues"
+  }
 }
