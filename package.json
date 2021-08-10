@@ -16,7 +16,7 @@
   "keywords": [
     "ecosystem:cordova",
     "cordova-android",
-    "cordova-plugin-ymchat",
+    "cordova-plugin-ymchat"
   ],
   "author": "Purushottam",
   "license": "ISC",
