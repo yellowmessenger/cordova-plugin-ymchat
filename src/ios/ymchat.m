@@ -108,4 +108,21 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:onBotClosed.callbackId];
 }
 
+- (void) unlinkDeviceToken:(CDVInvokedUrlCommand*)command {
+    NSString* botId = [command.arguments objectAtIndex:0];
+    NSString* apiKey = [command.arguments objectAtIndex:1];
+    NSString* deviceToken = [command.arguments objectAtIndex:2];
+    [[YMChat shared] unlinkDeviceTokenWithBotId:botId apiKey:apiKey deviceToken:deviceToken success:^{
+        CDVPluginResult* pluginResult = nil;
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    } failure:^(NSString * _Nonnull) {
+        NSArray *arguments = [[NSProcessInfo processInfo] arguments];
+        NSString* failureMessage = [arguments objectAtIndex:0];
+        CDVPluginResult* pluginResult = nil;
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:failureMessage];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }];
+}
+
 @end
