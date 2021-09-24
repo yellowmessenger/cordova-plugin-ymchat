@@ -8,7 +8,6 @@ import com.yellow.ai.ymchat.utils.Utils;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class YmChatCordova extends CordovaPlugin {
@@ -30,9 +29,6 @@ public class YmChatCordova extends CordovaPlugin {
       case "setEnableSpeech":
         setEnableSpeech(args, callbackContext);
         return true;
-      case "setEnableHistory":
-        setEnableHistory(args, callbackContext);
-        return true;
       case "setAuthenticationToken":
         setAuthenticationToken(args, callbackContext);
         return true;
@@ -52,10 +48,13 @@ public class YmChatCordova extends CordovaPlugin {
         onBotClose(callbackContext);
         return true;
       case "startChatbot":
-      startChatbot(callbackContext);
+        startChatbot(callbackContext);
         return true;
       case "closeBot":
         closeBot();
+        return true;
+      case "unlinkDeviceToken":
+        unlinkDeviceToken(args, callbackContext);
         return true;
     }
     return false;
@@ -106,15 +105,6 @@ public class YmChatCordova extends CordovaPlugin {
     }
   }
 
-  public void setEnableHistory(JSONArray args, CallbackContext callbackContext) {
-    try {
-      boolean enableHistory = args.getBoolean(0);
-      ymChatService.setEnableHistory(enableHistory, callbackContext);
-    } catch (Exception e) {
-      Utils.genericErrorHelper(e, callbackContext);
-    }
-  }
-
   public void setAuthenticationToken(JSONArray args, CallbackContext callbackContext) {
     try {
       String authToken = args.getString(0);
@@ -158,4 +148,16 @@ public class YmChatCordova extends CordovaPlugin {
   public void onBotClose(CallbackContext onBotCloseEvent) {
     ymChatService.onBotClose(onBotCloseEvent);
   }
+
+  private void unlinkDeviceToken(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String botId = args.getString(0);
+      String apiKey = args.getString(1);
+      String deviceToken = args.getString(2);
+      ymChatService.unlinkDeviceToken(botId, apiKey, deviceToken, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
 }

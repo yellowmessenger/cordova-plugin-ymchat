@@ -35,13 +35,6 @@
     YMChat.shared.config.enableSpeech = enableSpeech;
 }
 
-- (void)setEnableHistory:(CDVInvokedUrlCommand*)command
-{
-    BOOL history = [command.arguments objectAtIndex:0];
-    assert(YMChat.shared.config != nil);
-    YMChat.shared.config.enableHistory = history;
-}
-
 - (void)setAuthenticationToken:(CDVInvokedUrlCommand*)command
 {
     NSString* authToken = [command.arguments objectAtIndex:0];

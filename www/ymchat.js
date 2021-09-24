@@ -11,9 +11,6 @@ const YmChatAPI = {
   setEnableSpeech: (speech) => {
     exec(null, null, "ymchat", "setEnableSpeech", [speech]);
   },
-  setEnableHistory: (history) => {
-    exec(null, null, "ymchat", "setEnableHistory", [history]);
-  },
   setAuthenticationToken: (token) => {
     exec(null, null, "ymchat", "setAuthenticationToken", [token]);
   },
@@ -38,6 +35,9 @@ const YmChatAPI = {
   closeBot: () => {
     exec(null, null, "ymchat", "closeBot", []);
   },
+  unlinkDeviceToken: (botId, apiKey, deviceToken, success, failure) => {
+    exec(success, failure, "ymchat", "unlinkDeviceToken", [botId, apiKey, deviceToken])
+  }
 };
 
 module.exports = YmChatAPI;

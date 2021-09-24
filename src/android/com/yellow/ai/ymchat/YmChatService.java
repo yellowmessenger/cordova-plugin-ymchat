@@ -1,11 +1,13 @@
 package com.yellow.ai.ymchat;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.Log;
 
 import com.yellow.ai.ymchat.utils.Utils;
 import com.yellowmessenger.ymchat.YMChat;
 import com.yellowmessenger.ymchat.YMConfig;
+import com.yellowmessenger.ymchat.models.YellowCallback;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.PluginResult;
@@ -18,7 +20,7 @@ public class YmChatService {
   final String Tag = "YmChat";
   final String ExceptionString = "Exception";
   final String code = "code";
-  final String data = "data";
+  final String data = "date";
 
   HashMap<String, Object> payloadData = new HashMap<>();
 
@@ -50,10 +52,6 @@ public class YmChatService {
 
   public void setEnableSpeech(boolean speech, CallbackContext callbackContext) {
     ymChat.config.enableSpeech = speech;
-  }
-
-  public void setEnableHistory(boolean history, CallbackContext callbackContext) {
-    ymChat.config.enableHistory = history;
   }
 
   public void setAuthenticationToken(String token, CallbackContext callbackContext) {
@@ -104,5 +102,25 @@ public class YmChatService {
         Log.e(Tag, ExceptionString, e);
       }
     });
+  }
+
+  public void unlinkDeviceToken(String botId, String apiKey, String deviceToken,CallbackContext callbackContext) {
+    try{
+      ymChat.unlinkDeviceToken(botId, apiKey, deviceToken, new YellowCallback() {
+        @Override
+        public void success() {
+          callbackContext.success();
+        }
+
+        @Override
+        public void failure(String message) {
+          Utils.genericErrorHelper(new Exception(),callbackContext);
+        }
+      });
+    }
+    catch (Exception e)
+    {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
   }
 }
