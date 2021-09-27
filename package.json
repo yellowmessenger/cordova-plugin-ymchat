@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-ymchat",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Cordova plugin to integrate yellow.ai chatbot",
   "cordova": {
     "id": "cordova-plugin-ymchat",

@@ -35,13 +35,6 @@
     YMChat.shared.config.enableSpeech = enableSpeech;
 }
 
-- (void)setEnableHistory:(CDVInvokedUrlCommand*)command
-{
-    BOOL history = [command.arguments objectAtIndex:0];
-    assert(YMChat.shared.config != nil);
-    YMChat.shared.config.enableHistory = history;
-}
-
 - (void)setAuthenticationToken:(CDVInvokedUrlCommand*)command
 {
     NSString* authToken = [command.arguments objectAtIndex:0];
@@ -113,6 +106,21 @@
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Hello"];
     [pluginResult setKeepCallbackAsBool:YES];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:onBotClosed.callbackId];
+}
+
+- (void) unlinkDeviceToken:(CDVInvokedUrlCommand*)command {
+    NSString* botId = [command.arguments objectAtIndex:0];
+    NSString* apiKey = [command.arguments objectAtIndex:1];
+    NSString* deviceToken = [command.arguments objectAtIndex:2];
+    [[YMChat shared] unlinkDeviceTokenWithBotId:botId apiKey:apiKey deviceToken:deviceToken success:^{
+        CDVPluginResult* pluginResult = nil;
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    } failure:^(NSString * _Nonnull failureMessage) {
+        CDVPluginResult* pluginResult = nil;
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:failureMessage];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }];
 }
 
 @end
