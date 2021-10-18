@@ -11,6 +11,7 @@ import com.yellowmessenger.ymchat.models.YellowCallback;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.PluginResult;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -122,5 +123,9 @@ public class YmChatService {
     {
       Utils.genericErrorHelper(e, callbackContext);
     }
+  }
+
+  public void setVersion(int version, CallbackContext callbackContext) {
+    ymChat.config.version = version;
   }
 }

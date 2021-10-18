@@ -108,6 +108,13 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:onBotClosed.callbackId];
 }
 
+- (void)setVersion:(CDVInvokedUrlCommand*)command
+{
+    assert(YMChat.shared.config != nil);
+    NSNumber* version = [command.arguments objectAtIndex:0];
+    YMChat.shared.config.version = version.integerValue;
+}
+
 - (void) unlinkDeviceToken:(CDVInvokedUrlCommand*)command {
     NSString* botId = [command.arguments objectAtIndex:0];
     NSString* apiKey = [command.arguments objectAtIndex:1];
