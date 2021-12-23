@@ -128,4 +128,8 @@ public class YmChatService {
   public void setVersion(int version, CallbackContext callbackContext) {
     ymChat.config.version = version;
   }
+
+  public void setCustomLoaderUrl(String url, CallbackContext callbackContext) {
+    ymChat.config.customLoaderUrl = url;
+  }
 }

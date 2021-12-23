@@ -59,6 +59,9 @@ public class YmChatCordova extends CordovaPlugin {
       case "setVersion":
         setVersion(args,callbackContext);
         return  true;
+      case "setCustomLoaderURL":
+        setCustomLoaderURL(args, callbackContext);
+        return true;
     }
     return false;
   }
@@ -169,6 +172,15 @@ public class YmChatCordova extends CordovaPlugin {
       ymChatService.setVersion(version,callbackContext);
     }catch(Exception e)
     {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void setCustomLoaderURL(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String customUrl = args.getString(0);
+      ymChatService.setCustomLoaderUrl(customUrl, callbackContext);
+    } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }
   }
