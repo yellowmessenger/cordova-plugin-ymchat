@@ -130,4 +130,11 @@
     }];
 }
 
+- (void)setCustomLoaderURL:(CDVInvokedUrlCommand*)command
+{
+    NSString* url = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.customLoaderUrl = url;
+}
+
 @end

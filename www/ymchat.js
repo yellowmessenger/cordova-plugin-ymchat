@@ -40,6 +40,9 @@ const YmChatAPI = {
   },
   setVersion: (version) => {
     exec(null, null, "ymchat", "setVersion", [version])
+  },
+  setCustomLoaderURL: (url) => {
+    exec(null, null, "ymchat", "setCustomLoaderURL", [url]);
   }
 };
 
