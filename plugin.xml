@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-ymchat" version="1.2.0"
+<plugin id="cordova-plugin-ymchat" version="1.3.0"
     xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <name>ymchat</name>
@@ -24,7 +24,7 @@
         </config-file>
         <source-file src="src/android/com/yellow/ai/ymchat/YmChatCordova.java" target-dir="src/com/yellow/ai/ymchat" />
         <source-file src="src/android/com/yellow/ai/ymchat/YmChatService.java" target-dir="src/com/yellow/ai/ymchat" />
-        <source-file src="src/android/com/yellow/ai/ymchat/Utils/Utils.java" target-dir="src/com/yellow/ai/ymchat/utils" />
+        <source-file src="src/android/com/yellow/ai/ymchat/utils/Utils.java" target-dir="src/com/yellow/ai/ymchat/utils" />
         <framework custom="true" src="src/android/build.gradle" type="gradleReference" />
         <framework src="androidx.appcompat:appcompat:1.0.0" />
     </platform>
