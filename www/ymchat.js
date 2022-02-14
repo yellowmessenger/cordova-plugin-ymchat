@@ -44,11 +44,11 @@ const YmChatAPI = {
   setCustomLoaderURL: (url) => {
     exec(null, null, "ymchat", "setCustomLoaderURL", [url]);
   },
-  setStatusBarColour: (colour) => {
-    exec(null, null, "ymchat", "setStatusBarColour", [colour]);
+  setStatusBarColor: (color) => {
+    exec(null, null, "ymchat", "setStatusBarColor", [color]);
   },
-  setCloseButtonColour: (colour) => {
-    exec(null, null, "ymchat", "setCloseButtonColour", [colour]);
+  setCloseButtonColor: (color) => {
+    exec(null, null, "ymchat", "setCloseButtonColor", [color]);
   }
 };
 

@@ -137,18 +137,18 @@
     YMChat.shared.config.customLoaderUrl = url;
 }
 
-- (void)setStatusBarColour:(CDVInvokedUrlCommand*)command
+- (void)setStatusBarColor:(CDVInvokedUrlCommand*)command
 {
-    NSString* colour = [command.arguments objectAtIndex:0];
+    NSString* color = [command.arguments objectAtIndex:0];
     assert(YMChat.shared.config != nil);
-    YMChat.shared.config.statusBarColor = [self getColorFromHexString:colour];
+    YMChat.shared.config.statusBarColor = [self getColorFromHexString:color];
 }
 
-- (void)setCloseButtonColour:(CDVInvokedUrlCommand*)command
+- (void)setCloseButtonColor:(CDVInvokedUrlCommand*)command
 {
-    NSString* colour = [command.arguments objectAtIndex:0];
+    NSString* color = [command.arguments objectAtIndex:0];
     assert(YMChat.shared.config != nil);
-    YMChat.shared.config.closeButtonColor = [self getColorFromHexString:colour];
+    YMChat.shared.config.closeButtonColor = [self getColorFromHexString:color];
 }
 
 - (UIColor *)getColorFromHexString:(NSString *)hexString {
