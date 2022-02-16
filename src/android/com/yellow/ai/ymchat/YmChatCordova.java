@@ -59,11 +59,11 @@ public class YmChatCordova extends CordovaPlugin {
       case "setVersion":
         setVersion(args,callbackContext);
         return  true;
-      case "setStatusBarColour":
-        setStatusBarColour(args,callbackContext);
+      case "setStatusBarColor":
+        setStatusBarColor(args,callbackContext);
         return  true;
-      case "setCloseButtonColour":
-      setCloseButtonColour(args,callbackContext);
+      case "setCloseButtonColor":
+      setCloseButtonColor(args,callbackContext);
         return  true;
       case "setCustomLoaderURL":
         setCustomLoaderURL(args, callbackContext);
@@ -72,19 +72,19 @@ public class YmChatCordova extends CordovaPlugin {
     return false;
   }
 
-  private void setCloseButtonColour(JSONArray args, CallbackContext callbackContext) {
+  private void setCloseButtonColor(JSONArray args, CallbackContext callbackContext) {
     try {
-      String colour = args.getString(0);
-      ymChatService.setCloseButtonColour(colour, callbackContext);
+      String color = args.getString(0);
+      ymChatService.setCloseButtonColor(color, callbackContext);
     } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }
   }
 
-  private void setStatusBarColour(JSONArray args, CallbackContext callbackContext) {
+  private void setStatusBarColor(JSONArray args, CallbackContext callbackContext) {
     try {
-      String colour = args.getString(0);
-      ymChatService.setStatusBarColour(colour, callbackContext);
+      String color = args.getString(0);
+      ymChatService.setStatusBarColor(color, callbackContext);
     } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }
