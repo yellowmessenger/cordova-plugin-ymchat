@@ -133,11 +133,11 @@ public class YmChatService {
     ymChat.config.customLoaderUrl = url;
   }
 
-  public void setCloseButtonColour(String colour, CallbackContext callbackContext) {
-    ymChat.config.closeButtonColorHex = colour;
+  public void setCloseButtonColor(String color, CallbackContext callbackContext) {
+    ymChat.config.closeButtonColorFromHex = color;
   }
 
-  public void setStatusBarColour(String colour, CallbackContext callbackContext) {
-    ymChat.config.statusBarColorFromHex = colour;
+  public void setStatusBarColor(String color, CallbackContext callbackContext) {
+    ymChat.config.statusBarColorFromHex = color;
   }
 }
