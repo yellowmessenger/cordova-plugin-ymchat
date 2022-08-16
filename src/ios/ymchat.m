@@ -151,6 +151,13 @@
     YMChat.shared.config.closeButtonColor = [self getColorFromHexString:color];
 }
 
+- (void)disableActionsOnLoad:(CDVInvokedUrlCommand*)command
+{
+    BOOL shouldDisableActionsOnLoad = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.disableActionsOnLoad = shouldDisableActionsOnLoad;
+}
+
 - (UIColor *)getColorFromHexString:(NSString *)hexString {
     unsigned rgbValue = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];

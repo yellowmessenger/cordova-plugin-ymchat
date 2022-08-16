@@ -140,4 +140,8 @@ public class YmChatService {
   public void setStatusBarColor(String color, CallbackContext callbackContext) {
     ymChat.config.statusBarColorFromHex = color;
   }
+
+  public void disableActionsOnLoad(boolean shouldDisableActionsOnLoad, CallbackContext callbackContext) {
+    ymChat.config.disableActionsOnLoad = shouldDisableActionsOnLoad;
+  }
 }
