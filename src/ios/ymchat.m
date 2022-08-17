@@ -151,7 +151,7 @@
     YMChat.shared.config.closeButtonColor = [self getColorFromHexString:color];
 }
 
-- (void)disableActionsOnLoad:(CDVInvokedUrlCommand*)command
+- (void)setDisableActionsOnLoad:(CDVInvokedUrlCommand*)command
 {
     BOOL shouldDisableActionsOnLoad = [command.arguments objectAtIndex:0];
     assert(YMChat.shared.config != nil);

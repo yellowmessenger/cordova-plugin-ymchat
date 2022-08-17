@@ -141,7 +141,7 @@ public class YmChatService {
     ymChat.config.statusBarColorFromHex = color;
   }
 
-  public void disableActionsOnLoad(boolean shouldDisableActionsOnLoad, CallbackContext callbackContext) {
+  public void setDisableActionsOnLoad(boolean shouldDisableActionsOnLoad, CallbackContext callbackContext) {
     ymChat.config.disableActionsOnLoad = shouldDisableActionsOnLoad;
   }
 }
