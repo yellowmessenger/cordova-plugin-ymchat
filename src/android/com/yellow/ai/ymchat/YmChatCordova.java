@@ -68,8 +68,20 @@ public class YmChatCordova extends CordovaPlugin {
       case "setCustomLoaderURL":
         setCustomLoaderURL(args, callbackContext);
         return true;
+      case "setDisableActionsOnLoad":
+      setDisableActionsOnLoad(args, callbackContext);
+        return true;
     }
     return false;
+  }
+
+  private void setDisableActionsOnLoad(JSONArray args, CallbackContext callbackContext) {
+    try {
+      boolean shouldDisableActionsOnLoad = args.getBoolean(0);
+      ymChatService.setDisableActionsOnLoad(shouldDisableActionsOnLoad, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
   }
 
   private void setCloseButtonColor(JSONArray args, CallbackContext callbackContext) {

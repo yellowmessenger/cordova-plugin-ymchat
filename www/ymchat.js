@@ -49,7 +49,10 @@ const YmChatAPI = {
   },
   setCloseButtonColor: (color) => {
     exec(null, null, "ymchat", "setCloseButtonColor", [color]);
-  }
+  },
+  setDisableActionsOnLoad: (shouldDisableActionsOnLoad) => {
+    exec(null, null, "ymchat", "setDisableActionsOnLoad", [shouldDisableActionsOnLoad]);
+  },
 };
 
 module.exports = YmChatAPI;
