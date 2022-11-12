@@ -53,6 +53,9 @@ const YmChatAPI = {
   setDisableActionsOnLoad: (shouldDisableActionsOnLoad) => {
     exec(null, null, "ymchat", "setDisableActionsOnLoad", [shouldDisableActionsOnLoad]);
   },
+  setUseLiteVersion: (shouldUseLiteVersion) => {
+    exec(null, null, "ymchat", "setUseLiteVersion", [shouldUseLiteVersion]);
+  },
 };
 
 module.exports = YmChatAPI;

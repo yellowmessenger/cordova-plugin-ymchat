@@ -158,6 +158,13 @@
     YMChat.shared.config.disableActionsOnLoad = shouldDisableActionsOnLoad;
 }
 
+- (void)setUseLiteVersion:(CDVInvokedUrlCommand*)command
+{
+    BOOL shouldUseLiteVersion = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.useLiteVersion = shouldUseLiteVersion;
+}
+
 - (UIColor *)getColorFromHexString:(NSString *)hexString {
     unsigned rgbValue = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];
