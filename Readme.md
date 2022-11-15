@@ -3,7 +3,7 @@
 ## Documentation
 
 For integration and usage refer documentation
-[https://docs.yellow.ai/docs/platform_concepts/channelConfiguration/cordova](https://docs.yellow.ai/docs/platform_concepts/channelConfiguration/cordova)
+[https://docs.yellow.ai/docs/platform_concepts/mobile/chatbot/cordova](https://docs.yellow.ai/docs/platform_concepts/mobile/chatbot/cordova)
 
 ## Demo App
 
