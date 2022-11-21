@@ -158,7 +158,7 @@
     YMChat.shared.config.disableActionsOnLoad = shouldDisableActionsOnLoad;
 }
 
-- (void)setUseLiteVersion:(CDVInvokedUrlCommand*)command
+- (void)useLiteVersion:(CDVInvokedUrlCommand*)command
 {
     BOOL shouldUseLiteVersion = [command.arguments objectAtIndex:0];
     assert(YMChat.shared.config != nil);
