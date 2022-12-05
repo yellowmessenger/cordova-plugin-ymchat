@@ -71,8 +71,20 @@ public class YmChatCordova extends CordovaPlugin {
       case "setDisableActionsOnLoad":
       setDisableActionsOnLoad(args, callbackContext);
         return true;
+      case "useLiteVersion":
+        useLiteVersion(args, callbackContext);
+        return true;
     }
     return false;
+  }
+
+  private void useLiteVersion(JSONArray args, CallbackContext callbackContext) {
+    try {
+      boolean shouldUseLiteVersion = args.getBoolean(0);
+      ymChatService.useLiteVersion(shouldUseLiteVersion, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
   }
 
   private void setDisableActionsOnLoad(JSONArray args, CallbackContext callbackContext) {

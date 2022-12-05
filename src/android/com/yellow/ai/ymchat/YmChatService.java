@@ -144,4 +144,8 @@ public class YmChatService {
   public void setDisableActionsOnLoad(boolean shouldDisableActionsOnLoad, CallbackContext callbackContext) {
     ymChat.config.disableActionsOnLoad = shouldDisableActionsOnLoad;
   }
+
+  public void useLiteVersion(boolean shouldUseLiteVersion, CallbackContext callbackContext) {
+    ymChat.config.useLiteVersion = shouldUseLiteVersion;
+  }
 }
