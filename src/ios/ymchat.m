@@ -95,7 +95,11 @@
 
 - (void)onEventFromBotWithResponse:(YMBotEventResponse *)response {
     CDVPluginResult* pluginResult = nil;
-    NSDictionary* event = @{ @"code":response.code,@"data": response.data};
+    NSMutableDictionary *event = [[NSMutableDictionary alloc]initWithCapacity:10];
+    [event setObject:response.code forKey:@"code"];
+    if(response.data){
+        [event setObject:response.data forKey:@"data"];
+    }
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:event];
     [pluginResult setKeepCallbackAsBool:YES];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:onEvent.callbackId];
