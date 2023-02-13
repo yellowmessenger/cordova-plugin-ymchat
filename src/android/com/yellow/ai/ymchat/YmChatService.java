@@ -105,9 +105,9 @@ public class YmChatService {
     });
   }
 
-  public void unlinkDeviceToken(String botId, String apiKey, String deviceToken,CallbackContext callbackContext) {
+  public void unlinkDeviceToken(String apiKey, CallbackContext callbackContext) {
     try{
-      ymChat.unlinkDeviceToken(botId, apiKey, deviceToken, new YellowCallback() {
+      ymChat.unlinkDeviceToken(apiKey, ymChat.config, new YellowCallback() {
         @Override
         public void success() {
           callbackContext.success();

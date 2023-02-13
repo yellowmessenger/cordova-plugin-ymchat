@@ -120,10 +120,8 @@
 }
 
 - (void) unlinkDeviceToken:(CDVInvokedUrlCommand*)command {
-    NSString* botId = [command.arguments objectAtIndex:0];
-    NSString* apiKey = [command.arguments objectAtIndex:1];
-    NSString* deviceToken = [command.arguments objectAtIndex:2];
-    [[YMChat shared] unlinkDeviceTokenWithBotId:botId apiKey:apiKey deviceToken:deviceToken success:^{
+    NSString* apiKey = [command.arguments objectAtIndex:0];
+    [[YMChat shared] unlinkDeviceTokenWithApiKey:apiKey config:YMChat.shared.config success:^{
         CDVPluginResult* pluginResult = nil;
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];

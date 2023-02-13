@@ -211,10 +211,8 @@ public class YmChatCordova extends CordovaPlugin {
 
   private void unlinkDeviceToken(JSONArray args, CallbackContext callbackContext) {
     try {
-      String botId = args.getString(0);
-      String apiKey = args.getString(1);
-      String deviceToken = args.getString(2);
-      ymChatService.unlinkDeviceToken(botId, apiKey, deviceToken, callbackContext);
+      String apiKey = args.getString(0);
+      ymChatService.unlinkDeviceToken(apiKey, callbackContext);
     } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }
