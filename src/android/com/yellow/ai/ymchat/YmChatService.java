@@ -125,12 +125,33 @@ public class YmChatService {
     }
   }
 
-  public void registerDevice(String botId, String apiKey, String deviceToken,CallbackContext callbackContext) {
+  public void registerDevice(String apiKey, CallbackContext callbackContext) {
     try{
-      ymChat.registerDevice(botId, apiKey, deviceToken, new YellowCallback() {
+      ymChat.registerDevice(apiKey, ymChat.config, new YellowCallback() {
         @Override
         public void success() {
           callbackContext.success();
+        }
+
+        @Override
+        public void failure(String message) {
+          Utils.genericErrorHelper(new Exception(),callbackContext);
+        }
+      });
+    }
+    catch (Exception e)
+    {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void getUnreadMessagesCount(CallbackContext callbackContext) {
+    try{
+      ymChat.getUnreadMessagesCount(ymChat.config, new YellowCallback() {
+        @Override
+        public <T> void success(T data) {
+        YellowUnreadMessageResponse response = (YellowUnreadMessageResponse) data;
+          callbackContext.success(response.getUnreadCount());
         }
 
         @Override

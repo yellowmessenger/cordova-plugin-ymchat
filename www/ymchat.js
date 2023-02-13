@@ -41,6 +41,9 @@ const YmChatAPI = {
   registerDevice: (apiKey, success, failure) => {
     exec(success, failure, "ymchat", "registerDevice", [apiKey])
   },
+  getUnreadMessagesCount: (success, failure) => {
+    exec(success, failure, "ymchat", "getUnreadMessagesCount", [])
+  },
   setVersion: (version) => {
     exec(null, null, "ymchat", "setVersion", [version])
   },
