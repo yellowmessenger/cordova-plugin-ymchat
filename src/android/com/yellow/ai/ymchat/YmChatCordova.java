@@ -56,6 +56,9 @@ public class YmChatCordova extends CordovaPlugin {
       case "unlinkDeviceToken":
         unlinkDeviceToken(args, callbackContext);
         return true;
+      case "registerDevice":
+        registerDevice(args, callbackContext);
+        return true;
       case "setVersion":
         setVersion(args,callbackContext);
         return  true;
@@ -209,6 +212,15 @@ public class YmChatCordova extends CordovaPlugin {
       String apiKey = args.getString(1);
       String deviceToken = args.getString(2);
       ymChatService.unlinkDeviceToken(botId, apiKey, deviceToken, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  private void registerDevice(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String apiKey = args.getString(0);
+      ymChatService.registerDevice(apiKey, result);
     } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }

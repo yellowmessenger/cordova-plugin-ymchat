@@ -38,6 +38,9 @@ const YmChatAPI = {
   unlinkDeviceToken: (botId, apiKey, deviceToken, success, failure) => {
     exec(success, failure, "ymchat", "unlinkDeviceToken", [botId, apiKey, deviceToken])
   },
+  registerDevice: (apiKey, success, failure) => {
+    exec(success, failure, "ymchat", "registerDevice", [apiKey])
+  },
   setVersion: (version) => {
     exec(null, null, "ymchat", "setVersion", [version])
   },

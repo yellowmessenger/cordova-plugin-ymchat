@@ -134,6 +134,19 @@
     }];
 }
 
+- (void) registerDevice:(CDVInvokedUrlCommand*)command {
+    NSString* apiKey = [command.arguments objectAtIndex:0];
+    [[YMChat shared] registerDeviceWithApiKey:apiKey config:YMChat.shared.config success:^{
+        CDVPluginResult* pluginResult = nil;
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    } failure:^(NSString * _Nonnull failureMessage) {
+        CDVPluginResult* pluginResult = nil;
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:failureMessage];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }];
+}
+
 - (void)setCustomLoaderURL:(CDVInvokedUrlCommand*)command
 {
     NSString* url = [command.arguments objectAtIndex:0];

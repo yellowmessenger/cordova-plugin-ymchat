@@ -125,6 +125,26 @@ public class YmChatService {
     }
   }
 
+  public void registerDevice(String botId, String apiKey, String deviceToken,CallbackContext callbackContext) {
+    try{
+      ymChat.registerDevice(botId, apiKey, deviceToken, new YellowCallback() {
+        @Override
+        public void success() {
+          callbackContext.success();
+        }
+
+        @Override
+        public void failure(String message) {
+          Utils.genericErrorHelper(new Exception(),callbackContext);
+        }
+      });
+    }
+    catch (Exception e)
+    {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
   public void setVersion(int version, CallbackContext callbackContext) {
     ymChat.config.version = version;
   }
