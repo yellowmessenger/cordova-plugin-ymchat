@@ -122,7 +122,7 @@
 - (void) unlinkDeviceToken:(CDVInvokedUrlCommand*)command {
     if(YMChat.shared.config) {
         NSString* apiKey = [command.arguments objectAtIndex:0];
-        [[YMChat shared] unlinkDeviceTokenWithApiKey:apiKey config:YMChat.shared.config success:^{
+        [[YMChat shared] unlinkDeviceTokenWithApiKey:apiKey ymConfig:YMChat.shared.config success:^{
             CDVPluginResult* pluginResult = nil;
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
@@ -132,7 +132,8 @@
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         }];
     } else {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:"Bot id not found"];
+        CDVPluginResult* pluginResult = nil;
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Bot id not found"];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
 }
@@ -140,7 +141,7 @@
 - (void) registerDevice:(CDVInvokedUrlCommand*)command {
     NSString* apiKey = [command.arguments objectAtIndex:0];
     if(YMChat.shared.config) {
-        [[YMChat shared] registerDeviceWithApiKey:apiKey config:YMChat.shared.config success:^{
+        [[YMChat shared] registerDeviceWithApiKey:apiKey ymConfig:YMChat.shared.config success:^{
             CDVPluginResult* pluginResult = nil;
             pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
@@ -150,16 +151,17 @@
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         }];
     } else {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:"Bot id not found"];
+        CDVPluginResult* pluginResult = nil;
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Bot id not found"];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
 }
 
 - (void) getUnreadMessagesCount:(CDVInvokedUrlCommand*)command {
     if(YMChat.shared.config) {
-        [[YMChat shared] getUnreadMessagesCountWithYmConfig:YMChat.shared.config success:^{
+        [[YMChat shared] getUnreadMessagesCountWithYmConfig:YMChat.shared.config success:^(NSString * _Nonnull unreadCount) {
             CDVPluginResult* pluginResult = nil;
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:unreadCount];
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         } failure:^(NSString * _Nonnull failureMessage) {
             CDVPluginResult* pluginResult = nil;
@@ -167,7 +169,8 @@
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         }];
     } else {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:"Bot id not found"];
+        CDVPluginResult* pluginResult = nil;
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Bot id not found"];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
 }
