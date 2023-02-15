@@ -35,8 +35,14 @@ const YmChatAPI = {
   closeBot: () => {
     exec(null, null, "ymchat", "closeBot", []);
   },
-  unlinkDeviceToken: (botId, apiKey, deviceToken, success, failure) => {
-    exec(success, failure, "ymchat", "unlinkDeviceToken", [botId, apiKey, deviceToken])
+  unlinkDeviceToken: (apiKey, success, failure) => {
+    exec(success, failure, "ymchat", "unlinkDeviceToken", [apiKey])
+  },
+  registerDevice: (apiKey, success, failure) => {
+    exec(success, failure, "ymchat", "registerDevice", [apiKey])
+  },
+  getUnreadMessagesCount: (success, failure) => {
+    exec(success, failure, "ymchat", "getUnreadMessagesCount", [])
   },
   setVersion: (version) => {
     exec(null, null, "ymchat", "setVersion", [version])
