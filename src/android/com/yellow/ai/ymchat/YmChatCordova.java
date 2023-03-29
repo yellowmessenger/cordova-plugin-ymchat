@@ -221,7 +221,7 @@ public class YmChatCordova extends CordovaPlugin {
   private void registerDevice(JSONArray args, CallbackContext callbackContext) {
     try {
       String apiKey = args.getString(0);
-      ymChatService.registerDevice(apiKey, result);
+      ymChatService.registerDevice(apiKey, callbackContext);
     } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }
@@ -229,7 +229,7 @@ public class YmChatCordova extends CordovaPlugin {
 
   private void getUnreadMessagesCount(CallbackContext callbackContext) {
     try {
-      ymChatService.getUnreadMessagesCount(result);
+      ymChatService.getUnreadMessagesCount(callbackContext);
     } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }
