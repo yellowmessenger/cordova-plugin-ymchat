@@ -8,6 +8,8 @@ import com.yellow.ai.ymchat.utils.Utils;
 import com.yellowmessenger.ymchat.YMChat;
 import com.yellowmessenger.ymchat.YMConfig;
 import com.yellowmessenger.ymchat.models.YellowCallback;
+import com.yellowmessenger.ymchat.models.YellowDataCallback;
+import com.yellowmessenger.ymchat.models.YellowUnreadMessageResponse;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.PluginResult;
@@ -147,7 +149,7 @@ public class YmChatService {
 
   public void getUnreadMessagesCount(CallbackContext callbackContext) {
     try{
-      ymChat.getUnreadMessagesCount(ymChat.config, new YellowCallback() {
+      ymChat.getUnreadMessagesCount(ymChat.config, new YellowDataCallback() {
         @Override
         public <T> void success(T data) {
         YellowUnreadMessageResponse response = (YellowUnreadMessageResponse) data;
