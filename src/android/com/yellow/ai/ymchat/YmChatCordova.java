@@ -80,6 +80,9 @@ public class YmChatCordova extends CordovaPlugin {
       case "useLiteVersion":
         useLiteVersion(args, callbackContext);
         return true;
+      case "reloadBot":
+        reloadBot();
+        return true; 
     }
     return false;
   }
@@ -145,6 +148,10 @@ public class YmChatCordova extends CordovaPlugin {
 
   public void closeBot() {
     ymChatService.closeBot();
+  }
+
+  public void reloadBot() {
+    ymChatService.reloadBot();
   }
 
   public void setDeviceToken(JSONArray args, CallbackContext callbackContext) {

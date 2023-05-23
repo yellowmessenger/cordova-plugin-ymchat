@@ -49,6 +49,10 @@ public class YmChatService {
     ymChat.closeBot();
   }
 
+  public void reloadBot() {
+    ymChat.reloadBot();
+  }
+
   public void setDeviceToken(String token, CallbackContext callbackContext) {
     ymChat.config.deviceToken = token;
   }

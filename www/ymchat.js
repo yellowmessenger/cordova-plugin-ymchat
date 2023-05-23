@@ -62,6 +62,9 @@ const YmChatAPI = {
   useLiteVersion: (shouldUseLiteVersion) => {
     exec(null, null, "ymchat", "useLiteVersion", [shouldUseLiteVersion]);
   },
+  reloadBot: () => {
+    exec(null, null, "ymchat", "reloadBot", []);
+  },
 };
 
 module.exports = YmChatAPI;
