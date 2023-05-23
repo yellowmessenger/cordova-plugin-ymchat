@@ -82,7 +82,13 @@ public class YmChatCordova extends CordovaPlugin {
         return true;
       case "reloadBot":
         reloadBot();
+        return true;
+      case "setMicIconColor":
+        setMicIconColor(args, callbackContext);
         return true; 
+      case "setMicBackgroundColor":
+        setMicBackgroundColor(args, callbackContext);
+        return true;  
     }
     return false;
   }
@@ -261,4 +267,21 @@ public class YmChatCordova extends CordovaPlugin {
     }
   }
 
+  private void setMicIconColor(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String color = args.getString(0);
+      ymChatService.setMicIconColor(color, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  private void setMicBackgroundColor(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String color = args.getString(0);
+      ymChatService.setMicBackgroundColor(color, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
 }

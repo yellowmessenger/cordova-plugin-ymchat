@@ -65,6 +65,12 @@ const YmChatAPI = {
   reloadBot: () => {
     exec(null, null, "ymchat", "reloadBot", []);
   },
+  setMicIconColor: (color) => {
+    exec(null, null, "ymchat", "setMicIconColor", [color]);
+  },
+  setMicBackgroundColor: (color) => {
+    exec(null, null, "ymchat", "setMicBackgroundColor", [color]);
+  },
 };
 
 module.exports = YmChatAPI;
