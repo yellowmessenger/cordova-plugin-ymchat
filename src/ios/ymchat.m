@@ -92,6 +92,10 @@
     [[YMChat shared] closeBot];
 }
 
+- (void)reloadBot:(CDVInvokedUrlCommand*)command
+{
+    [[YMChat shared] reloadBot];
+}
 
 - (void)onEventFromBotWithResponse:(YMBotEventResponse *)response {
     CDVPluginResult* pluginResult = nil;
