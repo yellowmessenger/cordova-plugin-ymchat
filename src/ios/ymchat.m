@@ -214,6 +214,20 @@
     YMChat.shared.config.useLiteVersion = shouldUseLiteVersion;
 }
 
+- (void)setMicIconColor:(CDVInvokedUrlCommand*)command
+{
+    NSString* color = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.enableSpeechConfig.fabIconColor = [self getColorFromHexString:color];
+}
+
+- (void)setMicBackgroundColor:(CDVInvokedUrlCommand*)command
+{
+    NSString* color = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.enableSpeechConfig.fabBackgroundColor = [self getColorFromHexString:color];
+}
+
 - (UIColor *)getColorFromHexString:(NSString *)hexString {
     unsigned rgbValue = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];
