@@ -73,6 +73,9 @@ const YmChatAPI = {
   },
   useSecureYmAuth: (shouldUseSecureYmAuth) => {
     exec(null, null, "ymchat", "useSecureYmAuth", [shouldUseSecureYmAuth]);
+  },
+  revalidateToken: (token, refreshSession) => {
+    exec(null, null, "ymchat", "revalidateToken", [token, refreshSession]);
   }
 };
 

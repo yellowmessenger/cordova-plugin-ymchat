@@ -207,4 +207,8 @@ public class YmChatService {
   public void useSecureYmAuth(boolean shouldUseSecureYmAuth, CallbackContext callbackContext) {
     ymChat.config.useSecureYmAuth = shouldUseSecureYmAuth;
   }
+
+  public void revalidateToken(String token, boolean refreshSession, CallbackContext callbackContext) {
+    ymchat.revalidateToken(token, refreshSession)
+  }
 }

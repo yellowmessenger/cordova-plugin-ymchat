@@ -235,6 +235,13 @@
     YMChat.shared.config.useSecureYmAuth = shouldUseSecureYmAuth;
 }
 
+- (void)revalidateToken:(CDVInvokedUrlCommand*)command
+{
+    NSString* token = [command.arguments objectAtIndex:0];
+    BOOL refreshSession = [command.arguments objectAtIndex:1];
+    [[YMChat shared] revalidateTokenWithToken:token refreshSession:refreshSession];
+}
+
 - (UIColor *)getColorFromHexString:(NSString *)hexString {
     unsigned rgbValue = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];
