@@ -71,6 +71,9 @@ const YmChatAPI = {
   setMicBackgroundColor: (color) => {
     exec(null, null, "ymchat", "setMicBackgroundColor", [color]);
   },
+  useSecureYmAuth: (shouldUseSecureYmAuth) => {
+    exec(null, null, "ymchat", "useSecureYmAuth", [shouldUseSecureYmAuth]);
+  }
 };
 
 module.exports = YmChatAPI;

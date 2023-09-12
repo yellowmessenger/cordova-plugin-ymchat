@@ -203,4 +203,8 @@ public class YmChatService {
   public void setMicBackgroundColor(String color, CallbackContext callbackContext) {
     ymChat.config.enableSpeechConfig.fabBackgroundColor = color;
   }
+
+  public void useSecureYmAuth(boolean shouldUseSecureYmAuth, CallbackContext callbackContext) {
+    ymChat.config.useSecureYmAuth = shouldUseSecureYmAuth;
+  }
 }

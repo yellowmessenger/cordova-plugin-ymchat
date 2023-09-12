@@ -228,6 +228,13 @@
     YMChat.shared.config.enableSpeechConfig.fabBackgroundColor = [self getColorFromHexString:color];
 }
 
+- (void)useSecureYmAuth:(CDVInvokedUrlCommand*)command
+{
+    BOOL shouldUseSecureYmAuth = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.useSecureYmAuth = shouldUseSecureYmAuth;
+}
+
 - (UIColor *)getColorFromHexString:(NSString *)hexString {
     unsigned rgbValue = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];
