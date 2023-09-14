@@ -91,10 +91,10 @@ public class YmChatCordova extends CordovaPlugin {
         return true;  
       case "useSecureYmAuth":
         useSecureYmAuth(args,callbackContext);
-        return  true;
+        return true;
       case "revalidateToken":
         revalidateToken(args,callbackContext);
-        return  true;
+        return true;
     }
     return false;
   }
@@ -302,7 +302,7 @@ public class YmChatCordova extends CordovaPlugin {
 
   private void revalidateToken(JSONArray args, CallbackContext callbackContext) {
     try {
-      String token = args.getBoolean(0);
+      String token = args.getString(0);
       boolean refreshSession = args.getBoolean(1);
       ymChatService.revalidateToken(token, refreshSession, callbackContext);
     } catch (Exception e) {

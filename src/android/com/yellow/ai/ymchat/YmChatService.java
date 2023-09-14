@@ -209,6 +209,10 @@ public class YmChatService {
   }
 
   public void revalidateToken(String token, boolean refreshSession, CallbackContext callbackContext) {
-    ymchat.revalidateToken(token, refreshSession)
+    try {
+      ymChat.revalidateToken(token, refreshSession);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }
