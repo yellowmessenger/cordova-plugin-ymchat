@@ -94,7 +94,7 @@
 
 - (void)reloadBot:(CDVInvokedUrlCommand*)command
 {
-    [[YMChat shared] reloadBot];
+    [[YMChat shared] reloadBotAndReturnError:nil];
 }
 
 - (void)onEventFromBotWithResponse:(YMBotEventResponse *)response {
@@ -239,7 +239,7 @@
 {
     NSString* token = [command.arguments objectAtIndex:0];
     BOOL refreshSession = [command.arguments objectAtIndex:1];
-    [[YMChat shared] revalidateTokenWithToken:token refreshSession:refreshSession];
+    [[YMChat shared] revalidateTokenWithToken:token refreshSession:refreshSession error:nil];
 }
 
 - (UIColor *)getColorFromHexString:(NSString *)hexString {
