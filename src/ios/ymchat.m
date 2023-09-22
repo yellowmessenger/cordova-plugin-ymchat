@@ -94,7 +94,7 @@
 
 - (void)reloadBot:(CDVInvokedUrlCommand*)command
 {
-    [[YMChat shared] reloadBot];
+    [[YMChat shared] reloadBotAndReturnError:nil];
 }
 
 - (void)onEventFromBotWithResponse:(YMBotEventResponse *)response {
