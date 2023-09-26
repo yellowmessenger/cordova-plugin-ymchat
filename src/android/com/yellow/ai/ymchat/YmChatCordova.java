@@ -95,6 +95,9 @@ public class YmChatCordova extends CordovaPlugin {
       case "revalidateToken":
         revalidateToken(args,callbackContext);
         return true;
+      case "sendEventToBot":
+        sendEventToBot(args,callbackContext);
+        return true;
     }
     return false;
   }
@@ -305,6 +308,16 @@ public class YmChatCordova extends CordovaPlugin {
       String token = args.getString(0);
       boolean refreshSession = args.getBoolean(1);
       ymChatService.revalidateToken(token, refreshSession, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+  
+  private void sendEventToBot(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String code = args.getString(0);
+      JSONObject data = args.getJSONObject(1);
+      ymChatService.sendEventToBot(code, data, callbackContext);
     } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }
