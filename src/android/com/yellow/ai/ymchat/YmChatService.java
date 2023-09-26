@@ -88,7 +88,15 @@ public class YmChatService {
       JSONObject jsonObject = new JSONObject();
       try {
         jsonObject.put(code, botEvent.getCode());
-        jsonObject.put(data, new JSONObject(botEvent.getData()));
+        JSONObject dataJsonObject = new JSONObject();
+        if (botEvent.getData() != null) {
+          try {
+            dataJsonObject = new JSONObject(botEvent.getData());
+          }catch(Exception e) {
+            Log.e(Tag, ExceptionString, e);
+          }
+        }
+        jsonObject.put(data, dataJsonObject);
         PluginResult result = new PluginResult(PluginResult.Status.OK, jsonObject);
         result.setKeepCallback(true);
         callback.sendPluginResult(result);
