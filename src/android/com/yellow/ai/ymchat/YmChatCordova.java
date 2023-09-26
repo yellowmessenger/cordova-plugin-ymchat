@@ -89,6 +89,12 @@ public class YmChatCordova extends CordovaPlugin {
       case "setMicBackgroundColor":
         setMicBackgroundColor(args, callbackContext);
         return true;  
+      case "useSecureYmAuth":
+        useSecureYmAuth(args,callbackContext);
+        return true;
+      case "revalidateToken":
+        revalidateToken(args,callbackContext);
+        return true;
     }
     return false;
   }
@@ -280,6 +286,25 @@ public class YmChatCordova extends CordovaPlugin {
     try {
       String color = args.getString(0);
       ymChatService.setMicBackgroundColor(color, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  private void useSecureYmAuth(JSONArray args, CallbackContext callbackContext) {
+    try {
+      boolean shouldUseSecureYmAuth = args.getBoolean(0);
+      ymChatService.useSecureYmAuth(shouldUseSecureYmAuth, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  private void revalidateToken(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String token = args.getString(0);
+      boolean refreshSession = args.getBoolean(1);
+      ymChatService.revalidateToken(token, refreshSession, callbackContext);
     } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }
