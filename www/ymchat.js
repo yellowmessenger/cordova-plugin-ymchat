@@ -71,6 +71,12 @@ const YmChatAPI = {
   setMicBackgroundColor: (color) => {
     exec(null, null, "ymchat", "setMicBackgroundColor", [color]);
   },
+  useSecureYmAuth: (shouldUseSecureYmAuth) => {
+    exec(null, null, "ymchat", "useSecureYmAuth", [shouldUseSecureYmAuth]);
+  },
+  revalidateToken: (token, refreshSession) => {
+    exec(null, null, "ymchat", "revalidateToken", [token, refreshSession]);
+  }
 };
 
 module.exports = YmChatAPI;

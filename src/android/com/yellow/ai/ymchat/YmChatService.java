@@ -23,7 +23,7 @@ public class YmChatService {
   final String Tag = "YmChat";
   final String ExceptionString = "Exception";
   final String code = "code";
-  final String data = "date";
+  final String data = "data";
 
   HashMap<String, Object> payloadData = new HashMap<>();
 
@@ -88,7 +88,15 @@ public class YmChatService {
       JSONObject jsonObject = new JSONObject();
       try {
         jsonObject.put(code, botEvent.getCode());
-        jsonObject.put(data, new JSONObject(botEvent.getData()));
+        JSONObject dataJsonObject = new JSONObject();
+        if (botEvent.getData() != null) {
+          try {
+            dataJsonObject = new JSONObject(botEvent.getData());
+          }catch(Exception e) {
+            Log.e(Tag, ExceptionString, e);
+          }
+        }
+        jsonObject.put(data, dataJsonObject);
         PluginResult result = new PluginResult(PluginResult.Status.OK, jsonObject);
         result.setKeepCallback(true);
         callback.sendPluginResult(result);
@@ -202,5 +210,17 @@ public class YmChatService {
 
   public void setMicBackgroundColor(String color, CallbackContext callbackContext) {
     ymChat.config.enableSpeechConfig.fabBackgroundColor = color;
+  }
+
+  public void useSecureYmAuth(boolean shouldUseSecureYmAuth, CallbackContext callbackContext) {
+    ymChat.config.useSecureYmAuth = shouldUseSecureYmAuth;
+  }
+
+  public void revalidateToken(String token, boolean refreshSession, CallbackContext callbackContext) {
+    try {
+      ymChat.revalidateToken(token, refreshSession);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }
