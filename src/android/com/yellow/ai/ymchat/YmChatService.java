@@ -23,7 +23,7 @@ public class YmChatService {
   final String Tag = "YmChat";
   final String ExceptionString = "Exception";
   final String code = "code";
-  final String data = "date";
+  final String data = "data";
 
   HashMap<String, Object> payloadData = new HashMap<>();
 
