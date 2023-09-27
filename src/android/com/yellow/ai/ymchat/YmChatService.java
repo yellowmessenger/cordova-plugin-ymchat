@@ -10,6 +10,7 @@ import com.yellowmessenger.ymchat.YMConfig;
 import com.yellowmessenger.ymchat.models.YellowCallback;
 import com.yellowmessenger.ymchat.models.YellowDataCallback;
 import com.yellowmessenger.ymchat.models.YellowUnreadMessageResponse;
+import com.yellowmessenger.ymchat.models.YMEventModel;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.PluginResult;
@@ -219,6 +220,15 @@ public class YmChatService {
   public void revalidateToken(String token, boolean refreshSession, CallbackContext callbackContext) {
     try {
       ymChat.revalidateToken(token, refreshSession);
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
+  public void sendEventToBot(String code, JSONObject data, CallbackContext callbackContext) {
+    try {
+      YMEventModel model = new YMEventModel(code, Utils.jsonToMap(data));
+      ymChat.sendEventToBot(model);
     } catch (Exception e) {
       e.printStackTrace();
     }

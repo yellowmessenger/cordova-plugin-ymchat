@@ -76,6 +76,9 @@ const YmChatAPI = {
   },
   revalidateToken: (token, refreshSession) => {
     exec(null, null, "ymchat", "revalidateToken", [token, refreshSession]);
+  },
+  sendEventToBot: (code, data) => {
+    exec(null, null, "ymchat", "sendEventToBot", [code, data]);
   }
 };
 
