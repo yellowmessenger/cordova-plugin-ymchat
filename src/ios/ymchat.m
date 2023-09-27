@@ -242,6 +242,14 @@
     [[YMChat shared] revalidateTokenWithToken:token refreshSession:refreshSession error:nil];
 }
 
+- (void)sendEventToBot:(CDVInvokedUrlCommand*)command
+{
+    NSString* code = [command.arguments objectAtIndex:0];
+    NSDictionary* data = [command.arguments objectAtIndex:1];
+    YMEventModel* event = [[YMEventModel alloc] initWithCode:code data:data];
+    [[YMChat shared] sendEventToBotWithEvent:event error:nil];
+}
+
 - (UIColor *)getColorFromHexString:(NSString *)hexString {
     unsigned rgbValue = 0;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];
