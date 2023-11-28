@@ -218,32 +218,26 @@ public class YmChatService {
   }
 
   public void setThemeBotName(String name, CallbackContext callbackContext) {
-    if (ymChat.config.theme == null) { ymChat.config.theme = new YMTheme(); }
     ymChat.config.theme.botName = name;
   }
 
   public void setThemeBotDescription(String description, CallbackContext callbackContext) {
-    if (ymChat.config.theme == null) { ymChat.config.theme = new YMTheme(); }
     ymChat.config.theme.botDesc = description;
   }
 
   public void setThemePrimaryColor(String color, CallbackContext callbackContext) {
-      if (ymChat.config.theme == null) { ymChat.config.theme = new YMTheme(); }
       ymChat.config.theme.primaryColor = color;
   }
 
   public void setThemeSecondaryColor(String color, CallbackContext callbackContext) {
-      if (ymChat.config.theme == null) { ymChat.config.theme = new YMTheme(); }
       ymChat.config.theme.secondaryColor = color;
   }
 
   public void setThemeBotIcon(String iconUrl, CallbackContext callbackContext) {
-      if (ymChat.config.theme == null) { ymChat.config.theme = new YMTheme(); }
       ymChat.config.theme.botIcon = iconUrl;
   }
 
   public void setThemeBotClickIcon(String iconUrl, CallbackContext callbackContext) {
-      if (ymChat.config.theme == null) { ymChat.config.theme = new YMTheme(); }
       ymChat.config.theme.botClickIcon = iconUrl;
   }
 

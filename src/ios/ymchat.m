@@ -239,7 +239,6 @@
 {
     NSString* name = [command.arguments objectAtIndex:0];
     assert(YMChat.shared.config != nil);
-    if (YMChat.shared.config.theme == nil) { YMChat.shared.config.theme = [[YMTheme alloc] init]; }
     YMChat.shared.config.theme.botName = name;
 }
 
@@ -247,7 +246,6 @@
 {
     NSString* description = [command.arguments objectAtIndex:0];
     assert(YMChat.shared.config != nil);
-    if (YMChat.shared.config.theme == nil) { YMChat.shared.config.theme = [[YMTheme alloc] init]; }
     YMChat.shared.config.theme.botDescription = description;
 }
 
@@ -255,7 +253,6 @@
 {
     NSString* color = [command.arguments objectAtIndex:0];
     assert(YMChat.shared.config != nil);
-    if (YMChat.shared.config.theme == nil) { YMChat.shared.config.theme = [[YMTheme alloc] init]; }
     YMChat.shared.config.theme.primaryColor = [self getColorFromHexString:color];
 }
 
@@ -263,7 +260,6 @@
 {
     NSString* color = [command.arguments objectAtIndex:0];
     assert(YMChat.shared.config != nil);
-    if (YMChat.shared.config.theme == nil) { YMChat.shared.config.theme = [[YMTheme alloc] init]; }
     YMChat.shared.config.theme.secondaryColor = [self getColorFromHexString:color];
 }
 
@@ -271,7 +267,6 @@
 {
     NSString* iconUrl = [command.arguments objectAtIndex:0];
     assert(YMChat.shared.config != nil);
-    if (YMChat.shared.config.theme == nil) { YMChat.shared.config.theme = [[YMTheme alloc] init]; }
     YMChat.shared.config.theme.botIcon = iconUrl;
 }
 
@@ -279,7 +274,6 @@
 {
     NSString* iconUrl = [command.arguments objectAtIndex:0];
     assert(YMChat.shared.config != nil);
-    if (YMChat.shared.config.theme == nil) { YMChat.shared.config.theme = [[YMTheme alloc] init]; }
     YMChat.shared.config.theme.botClickIcon = iconUrl;
 }
 
