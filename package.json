@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-ymchat",
-  "version": "2.9.0",
+  "version": "2.10.0",
   "description": "Cordova plugin to integrate yellow.ai chatbot",
   "cordova": {
     "id": "cordova-plugin-ymchat",
@@ -18,7 +18,7 @@
     "cordova-android",
     "cordova-plugin-ymchat"
   ],
-  "author": "Purushottam",
+  "author": "Sankalp",
   "license": "ISC",
   "homepage": "https://github.com/yellowmessenger/cordova-plugin-ymchat.git",
   "bugs": {
