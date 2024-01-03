@@ -303,6 +303,60 @@ public class YmChatCordova extends CordovaPlugin {
     }
   }
 
+  public void setThemeBotName(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String botName = args.getString(0);
+      ymChatService.setThemeBotName(botName, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void setThemeBotDescription(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String botDesc = args.getString(0);
+      ymChatService.setThemeBotDescription(botDesc, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void setThemePrimaryColor(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String color = args.getString(0);
+      ymChatService.setThemePrimaryColor(color, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void setThemeSecondaryColor(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String color = args.getString(0);
+      ymChatService.setThemeSecondaryColor(color, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void setThemeBotIcon(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String iconUrl = args.getString(0);
+      ymChatService.setThemeBotIcon(iconUrl, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void setThemeBotClickIcon(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String iconUrl = args.getString(0);
+      ymChatService.setThemeBotClickIcon(iconUrl, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
   private void revalidateToken(JSONArray args, CallbackContext callbackContext) {
     try {
       String token = args.getString(0);
