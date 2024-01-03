@@ -217,6 +217,30 @@ public class YmChatService {
     ymChat.config.useSecureYmAuth = shouldUseSecureYmAuth;
   }
 
+  public void setThemeBotName(String name, CallbackContext callbackContext) {
+    ymChat.config.theme.botName = name;
+  }
+
+  public void setThemeBotDescription(String description, CallbackContext callbackContext) {
+    ymChat.config.theme.botDesc = description;
+  }
+
+  public void setThemePrimaryColor(String color, CallbackContext callbackContext) {
+      ymChat.config.theme.primaryColor = color;
+  }
+
+  public void setThemeSecondaryColor(String color, CallbackContext callbackContext) {
+      ymChat.config.theme.secondaryColor = color;
+  }
+
+  public void setThemeBotIcon(String iconUrl, CallbackContext callbackContext) {
+      ymChat.config.theme.botIcon = iconUrl;
+  }
+
+  public void setThemeBotClickIcon(String iconUrl, CallbackContext callbackContext) {
+      ymChat.config.theme.botClickIcon = iconUrl;
+  }
+
   public void revalidateToken(String token, boolean refreshSession, CallbackContext callbackContext) {
     try {
       ymChat.revalidateToken(token, refreshSession);

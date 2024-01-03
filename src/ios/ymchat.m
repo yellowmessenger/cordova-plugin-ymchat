@@ -235,6 +235,48 @@
     YMChat.shared.config.useSecureYmAuth = shouldUseSecureYmAuth;
 }
 
+- (void)setThemeBotName:(CDVInvokedUrlCommand*)command
+{
+    NSString* name = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.theme.botName = name;
+}
+
+- (void)setThemeBotDescription:(CDVInvokedUrlCommand*)command
+{
+    NSString* description = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.theme.botDescription = description;
+}
+
+- (void)setThemePrimaryColor:(CDVInvokedUrlCommand*)command
+{
+    NSString* color = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.theme.primaryColor = [self getColorFromHexString:color];
+}
+
+- (void)setThemeSecondaryColor:(CDVInvokedUrlCommand*)command
+{
+    NSString* color = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.theme.secondaryColor = [self getColorFromHexString:color];
+}
+
+- (void)setThemeBotIcon:(CDVInvokedUrlCommand*)command
+{
+    NSString* iconUrl = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.theme.botIcon = iconUrl;
+}
+
+- (void)setThemeBotClickIcon:(CDVInvokedUrlCommand*)command
+{
+    NSString* iconUrl = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.theme.botClickIcon = iconUrl;
+}
+
 - (void)revalidateToken:(CDVInvokedUrlCommand*)command
 {
     NSString* token = [command.arguments objectAtIndex:0];

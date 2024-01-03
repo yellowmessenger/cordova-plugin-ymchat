@@ -74,6 +74,24 @@ const YmChatAPI = {
   useSecureYmAuth: (shouldUseSecureYmAuth) => {
     exec(null, null, "ymchat", "useSecureYmAuth", [shouldUseSecureYmAuth]);
   },
+  setThemeBotName: (name) => {
+    exec(null, null, "ymchat", "setThemeBotName", [name]);
+  },
+  setThemeBotDescription: (description) => {
+    exec(null, null, "ymchat", "setThemeBotDescription", [description]);
+  },
+  setThemePrimaryColor: (color) => {
+    exec(null, null, "ymchat", "setThemePrimaryColor", [color]);
+  },
+  setThemeSecondaryColor: (color) => {
+    exec(null, null, "ymchat", "setThemeSecondaryColor", [color]);
+  },
+  setThemeBotIcon: (iconUrl) => {
+    exec(null, null, "ymchat", "setThemeBotIcon", [iconUrl]);
+  },
+  setThemeBotClickIcon: (iconUrl) => {
+    exec(null, null, "ymchat", "setThemeBotClickIcon", [iconUrl]);
+  },
   revalidateToken: (token, refreshSession) => {
     exec(null, null, "ymchat", "revalidateToken", [token, refreshSession]);
   },
