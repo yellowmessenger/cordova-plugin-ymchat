@@ -98,6 +98,27 @@ public class YmChatCordova extends CordovaPlugin {
       case "sendEventToBot":
         sendEventToBot(args,callbackContext);
         return true;
+      case "setThemeBotName":
+        setThemeBotName(args,callbackContext);
+        return true;
+      case "setThemeBotDescription":
+        setThemeBotDescription(args,callbackContext);
+        return true;
+      case "setThemePrimaryColor":
+        setThemePrimaryColor(args,callbackContext);
+        return true;
+      case "setThemeSecondaryColor":
+        setThemeSecondaryColor(args,callbackContext);
+        return true;
+      case "setThemeBotBubbleBackgroundColor":
+        setThemeBotBubbleBackgroundColor(args,callbackContext);
+        return true;
+      case "setThemeBotIcon":
+        setThemeBotIcon(args,callbackContext);
+        return true;
+      case "setThemeBotClickIcon":
+        setThemeBotClickIcon(args,callbackContext);
+        return true;
     }
     return false;
   }
@@ -334,6 +355,15 @@ public class YmChatCordova extends CordovaPlugin {
     try {
       String color = args.getString(0);
       ymChatService.setThemeSecondaryColor(color, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void setThemeBotBubbleBackgroundColor(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String color = args.getString(0);
+      ymChatService.setThemeBotBubbleBackgroundColor(color, callbackContext);
     } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }

@@ -263,6 +263,13 @@
     YMChat.shared.config.theme.secondaryColor = [self getColorFromHexString:color];
 }
 
+- (void)setThemeBotBubbleBackgroundColor:(CDVInvokedUrlCommand*)command
+{
+    NSString* color = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.theme.botBubbleBackgroundColor = [self getColorFromHexString:color];
+}
+
 - (void)setThemeBotIcon:(CDVInvokedUrlCommand*)command
 {
     NSString* iconUrl = [command.arguments objectAtIndex:0];
