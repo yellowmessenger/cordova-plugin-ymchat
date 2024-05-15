@@ -86,6 +86,9 @@ const YmChatAPI = {
   setThemeSecondaryColor: (color) => {
     exec(null, null, "ymchat", "setThemeSecondaryColor", [color]);
   },
+  setThemeBotBubbleBackgroundColor: (color) => {
+    exec(null, null, "ymchat", "setThemeBotBubbleBackgroundColor", [color]);
+  },
   setThemeBotIcon: (iconUrl) => {
     exec(null, null, "ymchat", "setThemeBotIcon", [iconUrl]);
   },
