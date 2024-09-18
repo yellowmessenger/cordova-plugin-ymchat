@@ -284,6 +284,13 @@
     YMChat.shared.config.theme.botClickIcon = iconUrl;
 }
 
+- (void)setChatContainerTheme:(CDVInvokedUrlCommand*)command
+{
+    NSString* theme = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.theme.chatBotTheme = theme;
+}
+
 - (void)revalidateToken:(CDVInvokedUrlCommand*)command
 {
     NSString* token = [command.arguments objectAtIndex:0];
