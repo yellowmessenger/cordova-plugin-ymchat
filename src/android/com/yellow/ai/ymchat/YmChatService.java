@@ -245,6 +245,10 @@ public class YmChatService {
       ymChat.config.theme.botClickIcon = iconUrl;
   }
 
+  public void setChatContainerTheme(String theme, CallbackContext callbackContext) {
+      ymChat.config.theme.chatBotTheme = theme;
+  }
+
   public void revalidateToken(String token, boolean refreshSession, CallbackContext callbackContext) {
     try {
       ymChat.revalidateToken(token, refreshSession);

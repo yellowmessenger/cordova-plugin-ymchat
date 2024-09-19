@@ -95,6 +95,9 @@ const YmChatAPI = {
   setThemeBotClickIcon: (iconUrl) => {
     exec(null, null, "ymchat", "setThemeBotClickIcon", [iconUrl]);
   },
+  setChatContainerTheme: (theme) => {
+    exec(null, null, "ymchat", "setChatContainerTheme", [theme]);
+  },
   revalidateToken: (token, refreshSession) => {
     exec(null, null, "ymchat", "revalidateToken", [token, refreshSession]);
   },

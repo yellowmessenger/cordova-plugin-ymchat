@@ -119,6 +119,9 @@ public class YmChatCordova extends CordovaPlugin {
       case "setThemeBotClickIcon":
         setThemeBotClickIcon(args,callbackContext);
         return true;
+      case "setChatContainerTheme":
+        setChatContainerTheme(args,callbackContext);
+        return true;
     }
     return false;
   }
@@ -382,6 +385,15 @@ public class YmChatCordova extends CordovaPlugin {
     try {
       String iconUrl = args.getString(0);
       ymChatService.setThemeBotClickIcon(iconUrl, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void setChatContainerTheme(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String theme = args.getString(0);
+      ymChatService.setChatContainerTheme(theme, callbackContext);
     } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }
