@@ -89,6 +89,9 @@ public class YmChatCordova extends CordovaPlugin {
       case "setMicBackgroundColor":
         setMicBackgroundColor(args, callbackContext);
         return true;  
+      case "setMicButtonMovable":
+        setMicButtonMovable(args, callbackContext);
+        return true;
       case "useSecureYmAuth":
         useSecureYmAuth(args,callbackContext);
         return true;
@@ -313,6 +316,15 @@ public class YmChatCordova extends CordovaPlugin {
     try {
       String color = args.getString(0);
       ymChatService.setMicBackgroundColor(color, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  private void setMicButtonMovable(JSONArray args, CallbackContext callbackContext) {
+    try {
+      boolean shouldMicButtonMovable = args.getBoolean(0);
+      ymChatService.setMicButtonMovable(shouldMicButtonMovable, callbackContext);
     } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }

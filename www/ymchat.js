@@ -71,6 +71,9 @@ const YmChatAPI = {
   setMicBackgroundColor: (color) => {
     exec(null, null, "ymchat", "setMicBackgroundColor", [color]);
   },
+  setMicButtonMovable: (shouldMicButtonMovable) => {
+    exec(null, null, "ymchat", "setMicButtonMovable", [shouldMicButtonMovable]);
+  },
   useSecureYmAuth: (shouldUseSecureYmAuth) => {
     exec(null, null, "ymchat", "useSecureYmAuth", [shouldUseSecureYmAuth]);
   },

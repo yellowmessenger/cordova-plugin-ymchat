@@ -32,7 +32,7 @@
 {
     BOOL enableSpeech = [command.arguments objectAtIndex:0];
     assert(YMChat.shared.config != nil);
-    YMChat.shared.config.enableSpeech = enableSpeech;
+    YMChat.shared.config.speechConfig.enableSpeech = enableSpeech;
 }
 
 - (void)setAuthenticationToken:(CDVInvokedUrlCommand*)command
@@ -218,14 +218,22 @@
 {
     NSString* color = [command.arguments objectAtIndex:0];
     assert(YMChat.shared.config != nil);
-    YMChat.shared.config.enableSpeechConfig.fabIconColor = [self getColorFromHexString:color];
+    YMChat.shared.config.speechConfig.fabIconColor = [self getColorFromHexString:color];
 }
 
 - (void)setMicBackgroundColor:(CDVInvokedUrlCommand*)command
 {
     NSString* color = [command.arguments objectAtIndex:0];
     assert(YMChat.shared.config != nil);
-    YMChat.shared.config.enableSpeechConfig.fabBackgroundColor = [self getColorFromHexString:color];
+    YMChat.shared.config.speechConfig.fabBackgroundColor = [self getColorFromHexString:color];
+}
+
+- (void)setMicButtonMovable:(CDVInvokedUrlCommand*)command
+{
+    NSNumber *shouldMicButtonMovableNumber = [command.arguments objectAtIndex:0];
+    BOOL shouldMicButtonMovable = [shouldMicButtonMovableNumber boolValue];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.speechConfig.isButtonMovable = shouldMicButtonMovable;
 }
 
 - (void)useSecureYmAuth:(CDVInvokedUrlCommand*)command
