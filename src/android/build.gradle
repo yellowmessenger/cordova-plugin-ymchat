@@ -24,5 +24,5 @@ repositories {
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.annotation:annotation:1.0.2'
-    implementation 'com.github.yellowmessenger:YMChatbot-Android:v2.17.0'
+    implementation 'com.github.yellowmessenger:YMChatbot-Android:v2.18.0'
 }
