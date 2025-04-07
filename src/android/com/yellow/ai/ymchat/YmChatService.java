@@ -221,6 +221,10 @@ public class YmChatService {
     ymChat.config.useSecureYmAuth = shouldUseSecureYmAuth;
   }
 
+  public void setOpenLinkExternally(boolean shouldOpenLinkExternally, CallbackContext callbackContext) {
+    ymChat.config.shouldOpenLinkExternally = shouldOpenLinkExternally;
+  }
+
   public void setThemeBotName(String name, CallbackContext callbackContext) {
     ymChat.config.theme.botName = name;
   }
