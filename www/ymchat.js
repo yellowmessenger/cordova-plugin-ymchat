@@ -74,6 +74,9 @@ const YmChatAPI = {
   setMicButtonMovable: (shouldMicButtonMovable) => {
     exec(null, null, "ymchat", "setMicButtonMovable", [shouldMicButtonMovable]);
   },
+  setOpenLinkExternally: (shouldOpenLinkExternally) => {
+    exec(null, null, "ymchat", "setOpenLinkExternally", [shouldOpenLinkExternally]);
+  },
   useSecureYmAuth: (shouldUseSecureYmAuth) => {
     exec(null, null, "ymchat", "useSecureYmAuth", [shouldUseSecureYmAuth]);
   },

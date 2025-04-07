@@ -101,6 +101,9 @@ public class YmChatCordova extends CordovaPlugin {
       case "sendEventToBot":
         sendEventToBot(args,callbackContext);
         return true;
+      case "setOpenLinkExternally":
+        setOpenLinkExternally(args,callbackContext);
+        return true;
       case "setThemeBotName":
         setThemeBotName(args,callbackContext);
         return true;
@@ -334,6 +337,15 @@ public class YmChatCordova extends CordovaPlugin {
     try {
       boolean shouldUseSecureYmAuth = args.getBoolean(0);
       ymChatService.useSecureYmAuth(shouldUseSecureYmAuth, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  private void setOpenLinkExternally(JSONArray args, CallbackContext callbackContext) {
+    try {
+      boolean shouldOpenLinkExternally = args.getBoolean(0);
+      ymChatService.setOpenLinkExternally(shouldOpenLinkExternally, callbackContext);
     } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }
