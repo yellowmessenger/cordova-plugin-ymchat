@@ -257,6 +257,10 @@ public class YmChatService {
       ymChat.config.theme.chatBotTheme = theme;
   }
 
+  public void setThemeLinkColor(String color, CallbackContext callbackContext) {
+      ymChat.config.theme.linkColor = color;
+  }
+
   public void revalidateToken(String token, boolean refreshSession, CallbackContext callbackContext) {
     try {
       ymChat.revalidateToken(token, refreshSession);

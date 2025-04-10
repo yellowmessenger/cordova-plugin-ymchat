@@ -33,7 +33,7 @@
                 <source url="https://github.com/CocoaPods/Specs.git" branch="master"/>
             </config>
             <pods use-frameworks="true">
-                <pod name="YMChat" spec="~> 1.22.1" swift-version="5.0"/>
+                <pod name="YMChat" spec="~> 1.23.0" swift-version="5.0"/>
             </pods>
         </podspec>
         <config-file parent="/*" target="config.xml">

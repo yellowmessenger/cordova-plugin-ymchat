@@ -128,6 +128,9 @@ public class YmChatCordova extends CordovaPlugin {
       case "setChatContainerTheme":
         setChatContainerTheme(args,callbackContext);
         return true;
+      case "setThemeLinkColor":
+        setThemeLinkColor(args,callbackContext);
+        return true;
     }
     return false;
   }
@@ -418,6 +421,15 @@ public class YmChatCordova extends CordovaPlugin {
     try {
       String theme = args.getString(0);
       ymChatService.setChatContainerTheme(theme, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void setThemeLinkColor(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String color = args.getString(0);
+      ymChatService.setThemeLinkColor(color, callbackContext);
     } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }
