@@ -104,6 +104,9 @@ const YmChatAPI = {
   setChatContainerTheme: (theme) => {
     exec(null, null, "ymchat", "setChatContainerTheme", [theme]);
   },
+  setThemeLinkColor: (color) => {
+    exec(null, null, "ymchat", "setThemeLinkColor", [color]);
+  },
   revalidateToken: (token, refreshSession) => {
     exec(null, null, "ymchat", "revalidateToken", [token, refreshSession]);
   },
