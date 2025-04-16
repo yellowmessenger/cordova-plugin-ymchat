@@ -47,6 +47,9 @@ public class YmChatCordova extends CordovaPlugin {
       case "onBotClose":
         onBotClose(callbackContext);
         return true;
+      case "onBotLoadFailed":
+        onBotLoadFailed(callbackContext);
+        return true;
       case "startChatbot":
         startChatbot(callbackContext);
         return true;
@@ -262,6 +265,10 @@ public class YmChatCordova extends CordovaPlugin {
 
   public void onBotClose(CallbackContext onBotCloseEvent) {
     ymChatService.onBotClose(onBotCloseEvent);
+  }
+
+  public void onBotLoadFailed(CallbackContext onBotLoadFailedEvent) {
+    ymChatService.onBotLoadFailed(onBotLoadFailedEvent);
   }
 
   private void unlinkDeviceToken(JSONArray args, CallbackContext callbackContext) {

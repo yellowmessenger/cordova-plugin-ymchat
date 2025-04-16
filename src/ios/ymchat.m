@@ -8,6 +8,7 @@
 {
     CDVInvokedUrlCommand* onEvent;
     CDVInvokedUrlCommand* onBotClosed;
+    CDVInvokedUrlCommand* onBotLoadFailed;
 }
 
 @end
@@ -80,6 +81,11 @@
     onBotClosed = command;
 }
 
+- (void)onBotLoadFailed:(CDVInvokedUrlCommand*)command
+{
+    onBotLoadFailed = command;
+}
+
 - (void)startChatbot:(CDVInvokedUrlCommand*)command
 {
     assert(YMChat.shared.config != nil);
@@ -114,6 +120,13 @@
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Hello"];
     [pluginResult setKeepCallbackAsBool:YES];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:onBotClosed.callbackId];
+}
+
+- (void) onBotLoadFailed {
+    CDVPluginResult* pluginResult = nil;
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Bot Load Failed"];
+    [pluginResult setKeepCallbackAsBool:YES];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:onBotLoadFailed.callbackId];
 }
 
 - (void)setVersion:(CDVInvokedUrlCommand*)command
