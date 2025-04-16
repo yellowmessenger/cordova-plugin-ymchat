@@ -29,6 +29,9 @@ const YmChatAPI = {
   onBotClose: (onBotCloseEvent) => {
     exec(onBotCloseEvent, null, "ymchat", "onBotClose", []);
   },
+  onBotLoadFailed: (onBotLoadFailedEvent) => {
+    exec(onBotLoadFailedEvent, null, "ymchat", "onBotLoadFailed", []);
+  },
   startChatbot: (success, failure) => {
     exec(success, failure, "ymchat", "startChatbot", []);
   },

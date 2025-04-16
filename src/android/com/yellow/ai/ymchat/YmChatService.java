@@ -120,6 +120,19 @@ public class YmChatService {
     });
   }
 
+  public void onBotLoadFailed(CallbackContext callback) {
+    ymChat.onBotLoadFailed(() ->
+    {
+      try {
+        PluginResult result = new PluginResult(PluginResult.Status.OK);
+        result.setKeepCallback(true);
+        callback.sendPluginResult(result);
+      } catch (Exception e) {
+        Log.e(Tag, ExceptionString, e);
+      }
+    });
+  }
+
   public void unlinkDeviceToken(String apiKey, CallbackContext callbackContext) {
     try{
       ymChat.unlinkDeviceToken(apiKey, ymChat.config, new YellowCallback() {
