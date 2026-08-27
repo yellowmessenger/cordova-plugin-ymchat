@@ -136,6 +136,13 @@
     YMChat.shared.config.version = version.integerValue;
 }
 
+- (void)setActivationMode:(CDVInvokedUrlCommand*)command
+{
+    NSString* mode = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.activationMode = [mode isEqualToString:@"voice"] ? YMActivationModeVoice : YMActivationModeChat;
+}
+
 - (void) unlinkDeviceToken:(CDVInvokedUrlCommand*)command {
     if(YMChat.shared.config) {
         NSString* apiKey = [command.arguments objectAtIndex:0];

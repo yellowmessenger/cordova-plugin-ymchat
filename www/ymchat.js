@@ -50,6 +50,9 @@ const YmChatAPI = {
   setVersion: (version) => {
     exec(null, null, "ymchat", "setVersion", [version])
   },
+  setActivationMode: (mode) => {
+    exec(null, null, "ymchat", "setActivationMode", [mode]);
+  },
   setCustomLoaderURL: (url) => {
     exec(null, null, "ymchat", "setCustomLoaderURL", [url]);
   },
