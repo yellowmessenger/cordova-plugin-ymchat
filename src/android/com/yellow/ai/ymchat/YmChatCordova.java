@@ -68,6 +68,9 @@ public class YmChatCordova extends CordovaPlugin {
       case "setVersion":
         setVersion(args,callbackContext);
         return  true;
+      case "setActivationMode":
+        setActivationMode(args, callbackContext);
+        return true;
       case "setStatusBarColor":
         setStatusBarColor(args,callbackContext);
         return  true;
@@ -303,6 +306,15 @@ public class YmChatCordova extends CordovaPlugin {
       ymChatService.setVersion(version,callbackContext);
     }catch(Exception e)
     {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  private void setActivationMode(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String mode = args.getString(0);
+      ymChatService.setActivationMode(mode, callbackContext);
+    } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }
   }
