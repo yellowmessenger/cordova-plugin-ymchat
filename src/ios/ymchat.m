@@ -98,6 +98,11 @@
     [[YMChat shared] closeBot];
 }
 
+- (void)stopVoiceMode:(CDVInvokedUrlCommand*)command
+{
+    [[YMChat shared] stopVoiceMode];
+}
+
 - (void)reloadBot:(CDVInvokedUrlCommand*)command
 {
     [[YMChat shared] reloadBotAndReturnError:nil];

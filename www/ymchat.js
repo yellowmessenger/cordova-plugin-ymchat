@@ -38,6 +38,9 @@ const YmChatAPI = {
   closeBot: () => {
     exec(null, null, "ymchat", "closeBot", []);
   },
+  stopVoiceMode: () => {
+    exec(null, null, "ymchat", "stopVoiceMode", []);
+  },
   unlinkDeviceToken: (apiKey, success, failure) => {
     exec(success, failure, "ymchat", "unlinkDeviceToken", [apiKey])
   },
