@@ -8,6 +8,7 @@ import com.yellow.ai.ymchat.utils.Utils;
 import com.yellowmessenger.ymchat.YMChat;
 import com.yellowmessenger.ymchat.YMConfig;
 import com.yellowmessenger.ymchat.models.YMActivationMode;
+import com.yellowmessenger.ymchat.models.YMUploadSource;
 import com.yellowmessenger.ymchat.models.YellowCallback;
 import com.yellowmessenger.ymchat.models.YellowDataCallback;
 import com.yellowmessenger.ymchat.models.YellowUnreadMessageResponse;
@@ -18,7 +19,9 @@ import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class YmChatService {
   YMChat ymChat;
@@ -225,6 +228,14 @@ public class YmChatService {
 
   public void useLiteVersion(boolean shouldUseLiteVersion, CallbackContext callbackContext) {
     ymChat.config.useLiteVersion = shouldUseLiteVersion;
+  }
+
+  public void setAllowedUploadSources(List<String> sources, CallbackContext callbackContext) {
+    List<YMUploadSource> uploadSources = new ArrayList<>();
+    for (String source : sources) {
+      uploadSources.add(YMUploadSource.valueOf(source.toUpperCase()));
+    }
+    ymChat.config.allowedUploadSources = uploadSources;
   }
 
   public void setMicIconColor(String color, CallbackContext callbackContext) {

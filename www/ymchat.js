@@ -71,6 +71,9 @@ const YmChatAPI = {
   useLiteVersion: (shouldUseLiteVersion) => {
     exec(null, null, "ymchat", "useLiteVersion", [shouldUseLiteVersion]);
   },
+  setAllowedUploadSources: (sources) => {
+    exec(null, null, "ymchat", "setAllowedUploadSources", [sources]);
+  },
   reloadBot: () => {
     exec(null, null, "ymchat", "reloadBot", []);
   },

@@ -10,6 +10,9 @@ import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class YmChatCordova extends CordovaPlugin {
 
   final String Tag = "YmChat";
@@ -89,6 +92,9 @@ public class YmChatCordova extends CordovaPlugin {
       case "useLiteVersion":
         useLiteVersion(args, callbackContext);
         return true;
+      case "setAllowedUploadSources":
+        setAllowedUploadSources(args, callbackContext);
+        return true;
       case "reloadBot":
         reloadBot();
         return true;
@@ -148,6 +154,19 @@ public class YmChatCordova extends CordovaPlugin {
     try {
       boolean shouldUseLiteVersion = args.getBoolean(0);
       ymChatService.useLiteVersion(shouldUseLiteVersion, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  private void setAllowedUploadSources(JSONArray args, CallbackContext callbackContext) {
+    try {
+      JSONArray sourcesArray = args.getJSONArray(0);
+      List<String> sources = new ArrayList<>();
+      for (int i = 0; i < sourcesArray.length(); i++) {
+        sources.add(sourcesArray.getString(i));
+      }
+      ymChatService.setAllowedUploadSources(sources, callbackContext);
     } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }
