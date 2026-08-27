@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.3.0]
+
+### Added
+
+- **Configurable Upload Sources** (Android only) — restricts the attachment picker to specific sources via `cordova.plugins.ymchat.setAllowedUploadSources(['camera'])` (or `['file']`, or both). Bridges the native Android SDK's `allowedUploadSources` config for the first time (`YMChatbot-Android` since v3.3.0, already pinned since v3.0.0 of this plugin). No iOS equivalent exists natively, so calling this on iOS is a no-op — the plugin doesn't implement the selector there.
+
 ## [3.2.0]
 
 ### Added
