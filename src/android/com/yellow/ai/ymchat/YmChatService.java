@@ -51,6 +51,10 @@ public class YmChatService {
     ymChat.closeBot();
   }
 
+  public void stopVoiceMode() {
+    ymChat.stopVoiceMode();
+  }
+
   public void reloadBot() {
     ymChat.reloadBot();
   }

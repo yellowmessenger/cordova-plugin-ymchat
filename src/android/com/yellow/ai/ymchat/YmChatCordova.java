@@ -56,6 +56,9 @@ public class YmChatCordova extends CordovaPlugin {
       case "closeBot":
         closeBot();
         return true;
+      case "stopVoiceMode":
+        stopVoiceMode();
+        return true;
       case "unlinkDeviceToken":
         unlinkDeviceToken(args, callbackContext);
         return true;
@@ -202,6 +205,10 @@ public class YmChatCordova extends CordovaPlugin {
 
   public void closeBot() {
     ymChatService.closeBot();
+  }
+
+  public void stopVoiceMode() {
+    ymChatService.stopVoiceMode();
   }
 
   public void reloadBot() {
