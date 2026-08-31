@@ -43,6 +43,13 @@
     YMChat.shared.config.ymAuthenticationToken = authToken;
 }
 
+- (void)setInitialUserMessage:(CDVInvokedUrlCommand*)command
+{
+    NSString* initialUserMessage = [command.arguments objectAtIndex:0];
+    assert(YMChat.shared.config != nil);
+    YMChat.shared.config.initialUserMessage = initialUserMessage;
+}
+
 - (void)showCloseButton:(CDVInvokedUrlCommand*)command
 {
     BOOL closeBot = [command.arguments objectAtIndex:0];
