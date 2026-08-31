@@ -74,6 +74,10 @@ public class YmChatService {
     ymChat.config.ymAuthenticationToken = token;
   }
 
+  public void setInitialUserMessage(String initialUserMessage, CallbackContext callbackContext) {
+    ymChat.config.initialUserMessage = initialUserMessage;
+  }
+
   public void showCloseButton(boolean show, CallbackContext callbackContext) {
     ymChat.config.showCloseButton = show;
   }

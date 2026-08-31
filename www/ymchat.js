@@ -14,6 +14,9 @@ const YmChatAPI = {
   setAuthenticationToken: (token) => {
     exec(null, null, "ymchat", "setAuthenticationToken", [token]);
   },
+  setInitialUserMessage: (message) => {
+    exec(null, null, "ymchat", "setInitialUserMessage", [message]);
+  },
   showCloseButton: (closeBot) => {
     exec(null, null, "ymchat", "showCloseButton", [closeBot]);
   },

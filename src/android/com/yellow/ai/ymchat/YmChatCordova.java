@@ -35,6 +35,9 @@ public class YmChatCordova extends CordovaPlugin {
       case "setAuthenticationToken":
         setAuthenticationToken(args, callbackContext);
         return true;
+      case "setInitialUserMessage":
+        setInitialUserMessage(args, callbackContext);
+        return true;
       case "showCloseButton":
         showCloseButton(args, callbackContext);
         return true;
@@ -256,6 +259,15 @@ public class YmChatCordova extends CordovaPlugin {
     try {
       String authToken = args.getString(0);
       ymChatService.setAuthenticationToken(authToken, callbackContext);
+    } catch (Exception e) {
+      Utils.genericErrorHelper(e, callbackContext);
+    }
+  }
+
+  public void setInitialUserMessage(JSONArray args, CallbackContext callbackContext) {
+    try {
+      String initialUserMessage = args.getString(0);
+      ymChatService.setInitialUserMessage(initialUserMessage, callbackContext);
     } catch (Exception e) {
       Utils.genericErrorHelper(e, callbackContext);
     }
