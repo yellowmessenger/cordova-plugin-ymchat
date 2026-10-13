@@ -1,7 +1,3 @@
-ext.cdvCompileSdkVersion=35
-ext.cdvMinSdkVersion=23
-ext.cdvTargetSdkVersion=35
-
 android {
     lintOptions {
         abortOnError false
