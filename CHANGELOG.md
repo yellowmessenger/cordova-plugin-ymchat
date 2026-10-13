@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.4.8]
+
+### Fixed
+
+- iOS: plugin install failed with `ParseError: Opening and ending tag mismatch: "string" != "plist"`. The speech-recognition usage-description preference had a stray `<` in its name, which corrupted `Info.plist` during variable substitution.
+- iOS: plugin install no longer clones the full CocoaPods specs repo from GitHub (several GB). The pinned `https://github.com/CocoaPods/Specs.git` source is removed, so CocoaPods uses its default CDN.
+- Android: the plugin no longer forces `minSdkVersion` 23 and compile/target SDK on the host app. cordova-android 15 requires minSdk 24, so builds failed in the manifest merger. Apps now control their own SDK levels.
+
+No JS/plugin API changes.
+
 ## [3.4.7]
 
 ### Fixed
