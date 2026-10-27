@@ -7,5 +7,5 @@ For integration and usage refer documentation
 
 ## Demo App
 
-A demo app can be used as a reference to better understand how this SDK can be integrated in the app
-[https://github.com/yellowmessenger/YMChatIonicDemo](https://github.com/yellowmessenger/YMChatIonicDemo)
+A sample Cordova app that shows how to integrate this SDK. Use it to try your bot and copy working integration code.
+[https://github.com/yellowmessenger/cordova-bot-tester-app](https://github.com/yellowmessenger/cordova-bot-tester-app)
